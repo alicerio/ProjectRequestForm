@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/mpoView.css" />
+    <link href="dist/css/tabulator.min.css" rel="stylesheet">
+
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
+    <title>New Project Request Overview</title>
+</head>
+<body>
+    <!-- Layout for the header of the page -->
+    <div id="header" class="container">
+        <div class="row">
+            <div id="logo" class="col-md-4">
+                <img src="./img/elmpologo.png" />
+            </div>
+            <div id="title" class="col-md-6">
+                <h1 id="admin_title">New Project Request Overview</h1>
+            </div>
+            <div id="user" class="col-md-2">
+                <div class="dropdown">
+                    <button id="userProfile" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <svg class="bi bi-person" width="1.5em" height="1.5em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M15 16s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002zM5.022 15h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C13.516 12.68 12.289 12 10 12c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002zM10 9a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd" />
+                        </svg>
+                        Username
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">Type: ADMIN</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./IPRF/sign-in/index.html">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table -->
+    <h1></h1>
+    <div id="example-table"></div>
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Importing Bootstrap table js -->
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <!-- Custom js to populate table, currently works with hard coded data -->
+    <script src="./js/agency.js"></script>
+</body>
+</html>
+
+<script>
+    //Generate print icon
+    var tableData = [
+        { agency: "UTEP", projectTitle: "Charlie", status: 25, timeStamp: 10, creator: "Bob" },
+        { agency: "TX", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "NM", projectTitle: "A", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "Q", projectTitle: "B", status: 30, timeStamp: 10, creator: "Brian" },
+        { agency: "A", projectTitle: "C", status: 100, timeStamp: 3, creator: "Beto" },
+        { agency: "V", projectTitle: "D", status: 11, timeStamp: 10, creator: "Brian" },
+        { agency: "Z", projectTitle: "E", status: 7, timeStamp: 3, creator: "Beto" },
+        { agency: "O", projectTitle: "F", status: 45, timeStamp: 10, creator: "Brian" },
+        { agency: "P", projectTitle: "G", status: 20, timeStamp: 3, creator: "Beto" },
+        { agency: "W", projectTitle: "h", status: 44, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 33, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 66, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+        { agency: "MPO", projectTitle: "Beta", status: 50, timeStamp: 10, creator: "Brian" },
+        { agency: "UTEP", projectTitle: "Alpha", status: 75, timeStamp: 3, creator: "Beto" },
+
+        //  {id:2, name:"Mary May", age:"1", progress:25, A:printIcon, col:"blue", dob:"14/05/1982", cheese:true},
+    ]
+    //Generate print icon
+    var printIcon = function (cell, formatterParams, onRendered) { //plain text value
+        return "<img class='pdf' src='./img/pdf.png'>";
+    };
+
+    //Build Tabulator
+    var table = new Tabulator("#example-table", {
+        layout: "fitColumns",      //fit columns to width of table
+        responsiveLayout: "hide",  //hide columns that dont fit on the table
+        tooltips: true,            //show tool tips on cells
+        addRowPos: "top",          //when adding a new row, add it to the top of the table
+        history: true,             //allow undo and redo actions on the table
+        pagination: "local",       //paginate the data
+        paginationSize: 25,         //allow 7 rows per page of data
+        resizableColumns: false,      //allow column order to be changed
+        resizableRows: false,       //allow row order to be changed
+
+        /*initialSort:[             //set the initial sort order of the data
+            {column:"agency", dir:"asc"},
+        ],*/
+        columns: [
+            {
+                title: "Agency", field: "agency", align: "center", frozen: true, formatter: function (cell, formatterParams) {
+                    var value = cell.getValue();
+                    if (value.indexOf("o") > 0) {
+                        return "<span style='color:red; font-weight:bold;'>" + value + "</span>";
+                    } else {
+                        return value;
+                    }
+                }
+            },
+            { title: "Project Title", field: "projectTitle", align: "center" },
+            { title: "Status", field: "status", formatter: "progress", formatterParams: { color: ["#f44336", "#2196F3", "#8BC34A"] }, sorter: "number" },
+            { title: "Time Stamp", field: "timeStamp", align: "center" },
+            { title: "File", formatter: printIcon, align: "center", cellClick: function (e, cell) { alert("Printing row data for: " + cell.getRow().getData().agency) } },
+            { title: "Creator", field: "creator", align: "center" },
+
+        ],
+
+
+
+    });
+
+    table.setData(tableData);
+</script>
