@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
-    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Import Javascript class, you can add js functions and call them -->
-    <script src="js/javascriptTest.js"></script>
-
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
-    <div id="header" class="container">
-        <div class="row">
-            <div id="title" class="col-md-12">
-                <h1 onclick="helloTeam();">Interactive Form</h1>
-            </div>
-        </div>
+
+
+
+<!-- Page 2 Interactie PRF Form -->
+<div class="container">
+    <h2>Project Selection Process </h2>
+
+    <div>
+        <label class="form-group col-md-12" for="reduction">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
+            If yes, please provide link or attachment with supporting data</label>
+            <select class="form-group col-md-2"id="reduction" class="form-control">
+                <option selected></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
     </div>
 
-    <container>    <!-- your code -->
-        <!-- your divs, boxes, text, dropdown boxes, ect -->
-        
-    </container>
+
+    <div>
+        <label class="form-group col-md-12" for="reduction">Is this project from an updated comprehensive plan, thoroughfare plan, feasibility or corridor study?
+            If yes, please provide link or attachment:
+            Excerpt from corridor plan attached (too large to attach whole document)</label>
+        <select class="form-group col-md-2"id="reduction" class="form-control">
+          <option selected></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+    </div>
+    <div>
+        <label class="form-group col-md-12" for="reduction">Is this project on the National Highway System NHS?</label>
+        <select class="form-group col-md-2"id="reduction" class="form-control">
+          <option selected></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+    </div>
+    <div>
+        <label class="form-group col-md-12" for="reduction">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
+            If yes, please provide link or attachment with supporting data</label>
+        <select class="form-group col-md-2"id="reduction" class="form-control">
+          <option selected></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+    </div>
+    <div>
+        <label class="form-group col-md-12" for="reduction">Is this project part of TPB resolution for the Active Transportation System?</label>
+        <select class="form-group col-md-2"id="reduction" class="form-control">
+          <option selected></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+    </div>
+    <div>
+        <label class="form-group col-md-12" for="reduction">Is this project part of TPB resolution for a Comprehensive Mobility Plan (CMP)?</label>
+        <select class="form-group col-md-2"id="reduction" class="form-control">
+          <option selected></option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+    </div>
 
 
+
+</div>
 
 </body>
 </html>
-
