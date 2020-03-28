@@ -1,6 +1,7 @@
 (function($){  
     configureProjectReadinessElementsTable("project-readiness-elements");
     transitOnly("transit-only");
+    totalProjectCostForm();
 })(jQuery);
 
 function configureProjectReadinessElementsTable(element){
@@ -194,5 +195,107 @@ function transitOnly(element){
 }
 
 function totalProjectCostForm(){
+    costs=[
+        {
+            "Construction Subtotal":"",
+
+            "Non-Construction Project":"",
+
+            "Construction":"",
+
+            "Construction Engineering (CE)":"",
+
+            "Contingencies":"",
+
+            "Potential Change Order":"",
+
+            "Preliminary Engineering":"",
+
+            "Indirects":"",
+
+            "Right Off Way":"",
+
+            "FTA Transfer":""
+        }
+        
+    ]
+    $("#yoe-form").dxForm({
+        formData: costs,
+        readOnly: false,
+        labelLocation: "left",
+        colCount: 1,
+        items:[
+            {
+                dataField:"Construction Subtotal",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Non-Construction Project",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Construction",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Construction Engineering (CE)",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Contingencies",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Potential Change Order",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Preliminary Engineering",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Indirects",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Right Off Way",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"FTA Transfer",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            }
+        ]
+    }).dxForm("instance").validate();
     
 }
