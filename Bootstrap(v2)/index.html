@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--<script>-->
+        <!--var dt = new Date();-->
+        <!--document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));-->
+    <!--</script>-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>form1</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body><div><img src="assets/img/Screenshot%20(61)resize.png"/><p type = "ePRF" align = "center"><b>ePRF</b></p><p align = "center"><b>Electronic Project Request Form</p></b></div><div>
+    <p  align = "center">
+    <i>
+      <font color="black">
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Date:
+        <strong>
+            <p id="datetime"  align = "center" style="text-decoration: underline;"></p>
+            <script>
+                var dt = new Date();
+                document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+            </script>
+        </strong>
+      </font>
+   </i>
+    </p>
+ </div><br><div class="form-check"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input id="formCheck-0" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-0">New Project<br /></label><div class="form-check"><input id="formCheck-1" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-1">Revision to an approved project<br /></label><div class="form-check"><label>Is the decision making/governing body of your agency committed to this project?</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input id="formCheck-8" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-8">Yes<br /></label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input id="formCheck-9" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-9">No<br /></label></div><div><label> MPO ID#:</label>
+<input class="" id="MPO" type="text" tabindex="2" minlength="5" required><span>&nbsp;</span><label> CSJ or CN: </label><span>&nbsp;</span><input class="" id="CSJ" type="text" tabindex="2" minlength="5" required></div><div><label>Project Name:  </label><span>&nbsp;</span><input class="" id="Pname" type="text" tabindex="2" minlength="5" required></div><div><label>Project Description:  </label></div><div><textarea id="w3mission" rows="4" cols="60" required>
+</textarea></div><label></label><div><label>Limit From:  </label><span>&nbsp;</span><input class="" id="Lfrom" type="text" tabindex="2" minlength="5" required></div><div><label>Limit To:  </label><span>&nbsp;</span><input class="" id="LTo" type="text" tabindex="2" minlength="5" required></div><br><div><b><label>Definition of Regionally Significant Roadway: 23 CFR § 450.104:</b></label></div><div><label>Regionally significant project means a transportation project (other than projects that may be grouped in the TIP and/or STIP or <a href=http://www.example.com>exempt</a> projects as defined in EPA's transportation conformity regulation (40 CFR part 93)) that is on a facility which serves regional transportation needs (such as access to and from the area outside the region; major activity centers in the region; major planned developments such as new retail malls, sports complexes, or employment centers; or transportation terminals) and would normally be included in the modeling of the metropolitan area's transportation network. At a minimum, this includes all principal arterial highways and all fixed guideway transit facilities that offer a significant alternative to regional highway travel.</label></div><br><div><label>Describe the relationship of this project to the definition of Regionally Significant Roadway or exempt projects: </label></div><div><textarea id="w3mission" rows="4" cols="60" required>
+</textarea></div><div><label>Need and Purpose:</label></div><div><textarea id="w3mission" rows="4" cols="60" required>
+</textarea> </div><div><label>Agency Comments:</label></div><div><textarea id="w3mission" rows="4" cols="60" required>
+</textarea></div>
+    <div
+        class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Requesting Highway/Roadway funds for this project/program (FHWA, State and/or Local Funds)</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Requesting Transit funds for this project/program (FTA, State and/or Local Funds)<br></label></div><div><b><label type = "FY">Federal Fiscal Year (FY)</label></b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>Highway/Roadway Name:  </label><span>&nbsp;</span><input class="" id="HRname" type="text" tabindex="2" minlength="5" required></div><div><label>if not known provide range:   </label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>Type of Project:  </label><span>&nbsp;</span><input class="" id="ToP" type="text" tabindex="2" minlength="5" required></div><div><input class="" id="Nknown" type="text2" tabindex="2" minlength="5" required><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>Federal Functional Classification</label><span>&nbsp;</span><a href=http://www.example.com>Texas</a><span>&nbsp;</span><a href=http://www.example.com>New Mexico</a></div><div><label>Network Year:   </label><span>&nbsp;</span><input class="" id="NY" type="text2" tabindex="2" minlength="4" value = "2020" required><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input class="" id="FFC" type="text" tabindex="2" minlength="5" required></div><div class="form-check"><input id="formCheck-5" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-5">ON-State system road<br /></label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>DOT District: </label><span>&nbsp;</span><input class="" id="DOT" type="text" tabindex="2" minlength="5" required></div><div class="form-check"><input id="formCheck-6" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-6">OFF-State system road<br /></label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>County: </label><span>&nbsp;</span><input class="" id="County" type="text" tabindex="2" minlength="5" required></div><div class="form-check"><input id="formCheck-7" class="form-check-input" type="checkbox"/><label class="form-check-label" for="formCheck-7">Capacity Project  <label type = "CP">(Additional through lanes)</label><br /></label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>Incorporated City: </label><span>&nbsp;</span><input class="" id="IC" type="text" tabindex="2" minlength="5" required></div><div><label>Number of Existing Lanes:   </label><span>&nbsp;</span><input class="" id="NoEL" type="text2" tabindex="2" minlength="5" required><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><label>Sponsor Entity: </label><span>&nbsp;</span><input class="" id="SE" type="text" tabindex="2" minlength="5" required></div><div><label>Number of Projected Lanes:   </label><span>&nbsp;</span><input class="" id="NoPL" type="text2" tabindex="2" minlength="5" required></div><div><label>Number of Miles:   </label><span>&nbsp;</span><input class="" id="NoM" type="text2" tabindex="2" minlength="5" required></div><form action="form2.html" method="POST" ><p align="right"><br>
+    <input type="submit" name="submit" value = "Next Page"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+</form><br><div><a href=http://www.example.com>Click here for Project Selection Process diagram and presentation (PDF)</a></div><div><p align="right">Page 1 of 4<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p></div>
+        <script
+            src="assets/js/jquery.min.js"></script>
+            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+            <script src="assets/js/errors.js"></script>
+</body>
+
+</html>
