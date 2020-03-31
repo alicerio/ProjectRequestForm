@@ -67,14 +67,16 @@ function configureProjectReadinessElementsTable(element){
     $("#"+element).dxDataGrid({
         dataSource:rows,
         editing: {
-            mode: "row",
+            mode: "popup",
             allowUpdating: true,
             allowDeleting: false,
             allowAdding: false
         },
+        columnAutoWidth:true,
         columns:[
             {
-                dataField:"header"
+                dataField:"header",
+                allowEditing:false
             },
             {
                 dataField:"EstStartDate",
@@ -149,14 +151,16 @@ function transitOnly(element){
     $("#"+element).dxDataGrid({
         dataSource:rows,
         editing: {
-            mode: "row",
+            mode: "popup",
             allowUpdating: true,
             allowDeleting: false,
             allowAdding: false
         },
+        columnAutoWidth:true,
         columns:[
             {
-                dataField:"header"
+                dataField:"header",
+                allowEditing:false,
             },
             {
                 dataField:"EstStartDate",
