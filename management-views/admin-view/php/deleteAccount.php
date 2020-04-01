@@ -38,8 +38,8 @@ $conn = connect_to_db();
 /*Verifies if values have been posted and tries to get them */
 if(isset($_POST['input'])){
     $account_to_delete = get_account_values();
-    $email = $account_to_delete['email'];
-    $query = "DELETE from users where email='".$email."'";
+    $key = $account_to_delete['__KEY__'];
+    $query = "DELETE from users where __KEY__='".$key."'";
     mysqli_query($conn,$query);
 /*Checks if insertion was succesful */
     if ($conn->query($sql) === TRUE) {
