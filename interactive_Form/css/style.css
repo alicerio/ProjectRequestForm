@@ -1,12 +1,18 @@
 #project-readiness-elements{
-    padding: 20px;
+    padding-bottom: 20px;
+    padding-top: 0px;
 }
 #yoe-form{
-    padding: 20px;
-    width: 20%;
+    padding-bottom: 10px;
+    padding-top: 0px;
 }
 #transit-only{
-    padding: 20px;
-    width: 70%;
+    padding-bottom: 20px;
+    padding-top: 0px;
+}
+#project-phases{
+    padding-bottom: 10px;
+    padding-top: 0px;
+    
 }
 

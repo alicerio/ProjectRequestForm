@@ -3,11 +3,17 @@
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css'>
+  <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.material.blue.light.css'><link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+  <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link src="css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -76,7 +82,36 @@
 
 </div>
 
-<container>    <!-- your code -->
+<!--Page 3 of the Form-->
+ 
+<div class="dx-viewport container">
+  <div class="row justify-content-start">
+      <div class="col">
+          <h6>Project Readiness Elements:</h6>
+          <div id="project-readiness-elements"></div>
+      </div>
+  </div>
+  <div class="row justify-content-start">
+      <div class="col">
+          <h6>Transit Only:</h6>
+          <div id="transit-only"></div>
+      </div>
+  </div>
+  <div class="row justify-content-start">
+      <div class="col-7">
+          <h6>YOE and Total Project Cost Information</h6>
+          <div id="yoe-form"></div>
+      </div>
+      <div class="col">
+          <h6>Project Phases</h6>
+          <div id="project-phases"></div>
+      </div>
+  </div>
+</div>
+
+
+
+<container>    <!-- Page 4 of the Form -->
   <!-- your divs, boxes, text, dropdown boxes, ect -->
   <form>
       <div class="form">
@@ -282,6 +317,19 @@
   <div style="width:580px;height:50px;border:1px solid #000;"></div>
   <p>Save your form before signing, all fields will be locked after signature is provided.</p>
 </container>
+
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- partial -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdn3.devexpress.com/jslib/19.2.6/js/dx.all.js'></script>
+  <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+  <script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--JavaScript custom-->
+  <script src="js/main.js"></script>
 
 </body>
 </html>

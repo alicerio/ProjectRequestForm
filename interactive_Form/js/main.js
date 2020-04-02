@@ -324,7 +324,7 @@ function projectPhasesForm(){
         formData: phases,
         readOnly: false,
         labelLocation: "left",
-        colCount: 4,
+        colCount: 2,
         items:[
             {
                 dataField:"FTA Transfer Requested",
