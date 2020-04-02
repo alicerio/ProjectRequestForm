@@ -2,6 +2,7 @@
     configureProjectReadinessElementsTable("project-readiness-elements");
     transitOnly("transit-only");
     totalProjectCostForm();
+    projectPhasesForm();
 })(jQuery);
 
 function configureProjectReadinessElementsTable(element){
@@ -227,7 +228,7 @@ function totalProjectCostForm(){
         formData: costs,
         readOnly: false,
         labelLocation: "left",
-        colCount: 1,
+        colCount: 2,
         items:[
             {
                 dataField:"Construction Subtotal",
@@ -302,4 +303,74 @@ function totalProjectCostForm(){
         ]
     }).dxForm("instance").validate();
     
+}
+
+function projectPhasesForm(){
+    phases=[
+        {
+            "FTA Transfer Requested":"",
+            "C":"",
+            "Non C":"",
+            "PE":"",
+            "E:Env":"",
+            "E:Eng":"",
+            "R":"",
+            "R:Acq":"",
+            "R:Utl":""
+        }
+    ]
+
+    $("#project-phases").dxForm({
+        formData: phases,
+        readOnly: false,
+        labelLocation: "left",
+        colCount: 4,
+        items:[
+            {
+                dataField:"FTA Transfer Requested",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"C",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"Non C",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"PE",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"E:Env",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"E:Eng",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"R",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"R:Acq",
+                editorType: "dxCheckBox",
+
+            },
+            {
+                dataField:"R:Utl",
+                editorType: "dxCheckBox",
+
+            },
+        ]
+    }).dxForm("instance").validate();
 }
