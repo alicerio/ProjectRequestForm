@@ -3,6 +3,8 @@
     transitOnly("transit-only");
     totalProjectCostForm();
     projectPhasesForm();
+    projectFunding();
+    contactInformation();
 })(jQuery);
 
 function configureProjectReadinessElementsTable(element){
@@ -373,4 +375,107 @@ function projectPhasesForm(){
             },
         ]
     }).dxForm("instance").validate();
+}
+
+function projectFunding(){
+    row = [
+        {
+        "fundingCategories":"Total Funding By Share",
+        "fedShare":"0.0",
+        "stateShare":"0.0",
+        "locShare":"0.0",
+        "locCont":"0.0",
+        "totalShare":"0.0"
+        }
+    ]
+    $("#project-funding").dxDataGrid({
+        dataSource:row,
+        editing: {
+            mode: "row",
+            allowUpdating: true,
+            allowDeleting: true,
+            allowAdding: true
+        },
+        columnAutoWidth:true,
+        columns:[
+            {
+                dataField:"fundingCategories",
+                caption:"Funding Category"
+            },
+            {
+                dataField:"fedShare",
+                caption:"Federal Share (Usually 80%)"
+            },
+            {
+                dataField:"stateShare",
+                caption:"State Share"
+            },
+            {
+                dataField:"locShare",
+                caption:"Local Share (Usually 20%)"
+            },
+            {
+                dataField:"locCont",
+                caption:"Local Contribution Beyond Local Share"
+            },
+            {
+                dataField:"totalShare",
+                caption:"Total Share"
+            }
+        ],
+    });
+
+}
+
+function contactInformation(){
+    rows = [
+        {
+            "header":"Local PM"
+        },
+        {
+            "header":"State PM"
+        },
+        {
+            "header":"Sponsor"
+        }
+    ]
+    $("#contact-information").dxDataGrid({
+        dataSource:rows,
+        editing: {
+            mode: "row",
+            allowUpdating: true,
+            allowDeleting: false,
+            allowAdding: false
+        },
+        columnAutoWidth:true,
+        columns:[
+            {
+                dataField:"header",
+                allowEditing:false
+            },
+            {
+                dataField:"name",
+                caption:"Name"
+            },
+            {
+                dataField:"phone",
+                caption:"Phone Number",
+                dataType:"number"
+            },
+            {
+                dataField:"email",
+                caption:"eMail"
+            },
+            {
+                dataField:"agency",
+                caption:"Agency"
+            },
+            {
+                dataField:"title",
+                caption:"Title"
+            }
+        ],
+    });
+    
+    
 }
