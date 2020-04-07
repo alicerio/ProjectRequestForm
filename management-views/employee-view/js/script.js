@@ -5,6 +5,7 @@
         type:'GET',
         dataType:'json',
         success: function(data){
+            console.log(data);
             //Send the user type to the table to provide proper permissions. The type of user is last element in array.
             //configTableProjects(data[data.length-1]);
             const div = document.querySelector('.dropdown-menu');
