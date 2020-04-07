@@ -76,6 +76,7 @@ function configureProjectReadinessElementsTable(element){
             allowAdding: false
         },
         columnAutoWidth:true,
+        showBorders:true,
         columns:[
             {
                 dataField:"header",
@@ -83,7 +84,7 @@ function configureProjectReadinessElementsTable(element){
             },
             {
                 dataField:"EstStartDate",
-                dataType:"datetime",
+                dataType:"date",
                 validationRules: [{
                     type: "required",
                     message: "Estimated Start Date Required"
@@ -91,7 +92,7 @@ function configureProjectReadinessElementsTable(element){
             },
             {
                 dataField:"EstEndDate",
-                dataType:"datetime",
+                dataType:"date",
                 validationRules: [{
                     type: "required",
                     message: "Estimated End Date Required"
@@ -160,6 +161,7 @@ function transitOnly(element){
             allowAdding: false
         },
         columnAutoWidth:true,
+        showBorders:true,
         columns:[
             {
                 dataField:"header",
@@ -167,7 +169,7 @@ function transitOnly(element){
             },
             {
                 dataField:"EstStartDate",
-                dataType:"datetime",
+                dataType:"date",
                 validationRules: [{
                     type: "required",
                     message: "Estimated Start Date Required"
@@ -175,7 +177,7 @@ function transitOnly(element){
             },
             {
                 dataField:"EstEndDate",
-                dataType:"datetime",
+                dataType:"date",
                 validationRules: [{
                     type: "required",
                     message: "Estimated End Date Required"
@@ -392,11 +394,12 @@ function projectFunding(){
         dataSource:row,
         editing: {
             mode: "row",
-            allowUpdating: true,
+            allowUpdating: false,
             allowDeleting: true,
             allowAdding: true
         },
-        columnAutoWidth:true,
+        columnAutoWidth:false,
+        showBorders:true,
         columns:[
             {
                 dataField:"fundingCategories",
@@ -448,6 +451,7 @@ function contactInformation(){
             allowAdding: false
         },
         columnAutoWidth:true,
+        showBorders:true,
         columns:[
             {
                 dataField:"header",

@@ -125,14 +125,14 @@
     <div class="col">
       <form>
         <div class="form">
-            <label for ="yes/no">&nbsp Is the sponsor paying for 100% of PE?</label>
+            <label for ="yes/no">Is the sponsor paying for 100% of PE?</label>
             <select class = "yes/no select" id = "yes/no">
                 <option></option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
             <br>
-            <label for = "yes/no">&nbsp Is this sponsor paying for 100% of the Row
+            <label for = "yes/no">Is this sponsor paying for 100% of the Row
                 and utility relocation?</label>
             <select class= "yes/no select" id = "yes/no">
                 <option></option>
@@ -140,15 +140,16 @@
                 <option>No</option>
             </select>
             <br>
-            <label for = "yes/no">&nbsp Is this decision making/governing body committed to the local/state 
+            <label for = "yes/no">Is this decision making/governing body committed to the local/state 
                 share(match)?</label>
             <select class = "yes/no select" id = "yes/no">
                 <option></option>
                 <option>Yes</option>
                 <option>No</option>                   
             </select>
-            <p>&nbsp Attach documentation. E.g. Resolution, Financial Plan, etc.</p>
-            <label for = "percentages">&nbsp Sponsor's investment to construction cost.
+            <br>
+            <label>Attach documentation. E.g. Resolution, Financial Plan, etc.</label>
+            <label for = "percentages">Sponsor's investment to construction cost.
                 (Excluding required local/state share)</label>
             <select class = "precent select" id = "percentages">
                 <option></option>
@@ -163,24 +164,22 @@
       </form>
     </div>
   </div>
+  <br>
   <div class="row justify-content-start">
     <div class="col">
-      <h6>&nbsp Project Funding</h6>
+      <h6>Project Funding</h6>
       <div class="form-check">
-          &nbsp
           <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
           <label class="form-check-label" for="defaultCheck1"> 
-            &nbspRequesting MPO Funds (For long range planning, beyond TIP years, funding category may not be identified, 
+            Requesting MPO Funds (For long range planning, beyond TIP years, funding category may not be identified, 
             MPO will make final recommendation)
           </label>
       </div>
-      <p>
-        &nbsp
-        <label>YOE Cost</label>
-        <input type = "text"
-               id = "YOE Cost"
-               value = "" />
-      </p>
+      
+      <label>YOE Cost</label>
+      <input type = "text"
+            id = "YOE Cost"
+            value = "" />
     </div>
   </div>
 
@@ -189,7 +188,8 @@
         <div id="project-funding"></div>
     </div>
   </div>
-
+  
+  <br>
   <div class="row justify-content-start">
     <div class="col">
       <h6>Contact Information</h6>
@@ -204,33 +204,34 @@
       <h6>Attachments (CMAQ Analysis, Cost Estimate, Schematic/Design Concept, etc.</h6>
       <div style="width:1000px;height:100px;border:1px solid #000;"></div>
       <br>
-      &nbsp
       <button type="button" class="btn btn-outline-dark">Add File</button>
       <button type="button" class="btn btn-outline-dark">Open File</button>
       <button type="button" class="btn btn-outline-dark">Remove File</button>
       <button type="button" class="btn btn-outline-dark">Show Attachment Name and Size</button>
-      <p>&nbsp&nbsp*Please attach any supporting documents to this form, if possivle (CMAQ
+      <br><br>
+      <p>*Please attach any supporting documents to this form, if possivle (CMAQ
           Analysis, Cost Estimate, Environmental Document, or other).
       <br>
-        &nbsp&nbsp*Only Adobe Acrobat users may be able to attach files to this form. If you are not able to attach files, please send them via e-mail.
+        *Only Adobe Acrobat users may be able to attach files to this form. If you are not able to attach files, please send them via e-mail.
       <br>
-        &nbsp&nbsp*This form does not guarantee the funds requested nor the approval of the project in the MTP/TIP.
+        *This form does not guarantee the funds requested nor the approval of the project in the MTP/TIP.
       <br>
-        &nbsp&nbsp*By signing this Project Request Form you certify that the project Description and limits are within the scope of work of the project.
+        *By signing this Project Request Form you certify that the project Description and limits are within the scope of work of the project.
       <br>
-        &nbsp&nbsp*Please fill out this form entirely, and sign (digital signature). If "Signed By" field is blank, the form will not be accepted.</p>
-      <br><br>
+        *Please fill out this form entirely, and sign (digital signature). If "Signed By" field is blank, the form will not be accepted.</p>
+      <br>
     </div>
   </div>
 
   <div class="row justify-content-start">
     <div class="col">
-      <button type="button" class="btn btn-dark">Save Form As</button></pre>
-      <button type="button" class="btn btn-dark">Reset Form</button>
-      <button type="button" class="btn btn-dark">Print Form</button>
-      <h5></h5>
-      <div style="width:580px;height:50px;border:1px solid #000;"></div>
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Signature</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
       <p>Save your form before signing, all fields will be locked after signature is provided.</p>
+      <button type="button" class="btn btn-dark">Save Form As</button></pre>
+      <button type="button" class="btn btn-dark">Print Form</button>
     </div>
   </div>
 
