@@ -10,7 +10,7 @@
             const div = document.querySelector('.dropdown-menu');
             div.innerHTML += `<a class="dropdown-item" href="#">${data[data.length-1]}</a>`;
             div.innerHTML += `<a class="dropdown-item" href="#">${data[0]}</a>`;
-            div.innerHTML += `<a class="dropdown-item" href="#">${data[1]}</a>`;
+            div.innerHTML += `<a class="dropdown-item" href="#">Jose Jesus</a>`;
         }  
     });
         
