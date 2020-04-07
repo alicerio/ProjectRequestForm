@@ -16,12 +16,27 @@
         }
     });
     
+    $.ajax({
+        url: '../php/retrieveProjects.php',
+        type: 'GET',
+        dataType:'json',
+        success: function(data) {
+            /**Create data grid from data provided */
+            $("#gridContainerProjects").dxDataGrid({
+                dataSource: data,
+            });
+            configTableProjects();
+        },
+        error: function(e) {
+            //called when there is an error
+            console.log(e.message);
+        }
+    });
+    setDataSourceProjects();
 
-    configTableProjects();
 
 })(jQuery);
 
-currentTest = 0;
 
 /**
  * Function that opens tab in view
@@ -65,6 +80,7 @@ function configTableEmployees(){
 
     /*Table container configuration*/
     $("#gridContainerEmployees").dxDataGrid({
+        keyExp:"ID",
         showBorders: true,
         paging: {
             pageSize: 10
@@ -75,8 +91,12 @@ function configTableEmployees(){
             allowDeleting: true,
             allowAdding: true
         }, 
-        hoverStateEnabled: true,
         columns: [
+            {
+                caption:"ID",
+                dataField:"__KEY__",
+                visible:false,
+            },
             {
                 caption: "Agency",
                 dataField: "agency"
@@ -113,18 +133,16 @@ function configTableEmployees(){
                     $links = e.cellElement.find(".dx-link");  
                 if(isEditing){ 
                     $links.filter(".dx-link-cancel").on("click", function(args) {  
-                        // var newData = e["data"];
-                        // delete newData.__KEY__;
-                        // sendNewUser(newData);
+                        var newData = e["data"];
+                        sendUpdatedUser(newData);
                     });  
                 }  
             }  
         },
         onEditingStart: function(e) {
             console.log("Editing Start");
-            // var dataToRem = e["data"];
-            // delete dataToRem.__KEY__;
-            // removeUser(dataToRem);
+            var dataToRem = e["data"];
+            removeUser(dataToRem);
         },
         onInitNewRow: function(e) {
             console.log("Init Row");
@@ -135,7 +153,6 @@ function configTableEmployees(){
         onRowInserted: function(e) {
             //Data is inserted succesfully
             var newData = e["data"];
-            delete newData.__KEY__;
             sendNewUser(newData);
         },
         onRowUpdating: function(e) {
@@ -143,10 +160,16 @@ function configTableEmployees(){
         },
         onRowUpdated: function(e) {
             console.log("Row Updated");
-            //Here we insert new updated data into database
-            // var newData = e["data"];
-            // delete newData.__KEY__;
-            // sendNewUser(newData);
+            //Here we insert new updated data into database depending on if the password changed
+            var newData = e["data"];
+            if(newData.pass.length<25){
+                //Password was changed and we insert as new
+                sendNewUser(newData);
+            }else{
+                //Password did not change so we insert without hashing.
+                sendUpdatedUser(newData);
+            }
+            
         },
         onRowRemoving: function(e) {
             console.log("Row Removing");
@@ -154,7 +177,6 @@ function configTableEmployees(){
         onRowRemoved: function(e) {
             console.log("Row Removed");
             var dataToRem = e["data"];
-            delete dataToRem.__KEY__;
             removeUser(dataToRem);
         }
     });
@@ -170,40 +192,61 @@ function configTableEmployees(){
 
 /**Function that configures the Projects table */
 function configTableProjects(){
-    var values = setDataSourceProjects();
-    var employees = values[1];
-    var status1 = values[0];
-    var tasks = values[2];
+    /**Data for the Project Table */
+    var status1 = [{
+        "Status": "In progress",
+        "ID":1
+    },
+    {
+        "Status": "Pending PM Review",
+        "ID":2
+    },
+    {
+        "Status": "PM Signed",
+        "ID":3
+    },
+    {
+        "Status": "Submitted V1",
+        "ID":4
+    },
+    {
+        "Status": "MPO Returned",
+        "ID":5 
+    },
+    {
+        "Status":"Submitted V2",
+        "ID":7
+    },    
+    {
+        "Status": "MPO Approved",
+        "ID":6
+    }];
     /*Table of projects  */
     $("#gridContainerProjects").dxDataGrid({
-        dataSource: employees,
         keyExpr: "ID",
         showBorders: true,
-        hoverStateEnabled: true,
-
-            editing: {
+        editing: {
             mode: "row",
-            allowUpdating: true,
-            allowDeleting: true,
+            allowUpdating: false,
+            allowDeleting: false,
             allowAdding: true
         }, 
-        hoverStateEnabled: true,
         columns: [{
-                dataField: "Project",
+                dataField: "project",
                 caption: "Project",
         
             },
             {
                 caption:"Agency",
-                dataField:"Agency",
+                dataField:"agency",
             },
             {
                 caption:"First Name",
-                dataField:"FirstName",
+                dataField:"first_name",
             },
             {   
                 caption:"Last Name",
-                dataField:"LastName",
+                dataField:"last_name",
             },
             {
                 caption:"Status",
@@ -215,89 +258,7 @@ function configTableProjects(){
                 }
             }
         ],
-        masterDetail: {
-            enabled: true,
-            
-            template: function(container, options) { 
-                var currentEmployeeData = options.data;
-
-                $("<div>")
-                    .addClass("master-detail-caption")
-                    .text(currentEmployeeData.Project +  "'s Submissions:")
-                    .appendTo(container);
-
-                $("<div>")
-                    .dxDataGrid({
-                        columnAutoWidth: true,
-                        showBorders: true,
-                        hoverStateEnabled: true,
-                        onCellClick: function(e) {
-                            let holder = e.value;
-                            console.log(holder);
-                            console.log(e);
-                            if(e.value === "Log of Changes") { // if log of changes is click
-                                alert("displaying log");
-                                window.open(
-                                    '/MPO_Projects/requestForm_Brian/interactive_form/tester_form.html',
-                                    '_blank' 
-                                  );
-                            }
-                            if(e.columnIndex === 2) { // if pdf icon is click
-                              //store data of object clicked
-                               localStorage.setItem("indexClicked", JSON.stringify(e.data));
-
-                               window.document.location = "/MPO_Projects/requestForm_Brian/interactive_form/tester_form.html";
-                                /*window.open(
-                                    '/MPO_Projects/requestForm_Brian/interactive_form/tester_form.html',
-                                    '_blank' // <- This is what makes it open in a new window.
-                                  );*/
-                            }
-                        },
-                            editing: {
-                            mode: "row",
-                            allowUpdating: false,
-                            allowDeleting: false
-                            }, 
-                        columns: [
-                            {
-                            caption:"Title",
-                            dataType:"String",
-                            dataField:"Subject",
-                            // editorType: "dxTextArea",
-                            colSpan: 2,
-                        
-                            },
-                            {
-                                caption:"Submitted",
-                                dataField: "DueDate",
-                                dataType: "date"
-                            },                           
-                            {
-                                caption:"Document",
-                                dataField: "document",
-                               // width: 100,
-                                allowFiltering: false,
-                                allowSorting: false,
-                                cellTemplate: function (container, options) {
-                                    $("<div>")
-                                        .append($("<img>", { "src": "../img/pdf.png" })) 
-                                        .appendTo(container);
-                                }
-                            }                              
-
-                        ],
-                        dataSource: new DevExpress.data.DataSource({
-                            store: new DevExpress.data.ArrayStore({
-                                key: "ID",
-                                data: tasks
-                            }),
-                            filter: ["EmployeeID", "=", options.key]
-                        })
-                    }).appendTo(container);
-            }
-        }
     });
-    
 
 }
 
@@ -307,6 +268,24 @@ function sendNewUser(input){
     console.log(input);
     $.ajax({
         url: '../../sign-in/php/newAccount.php',
+        type: 'POST',
+        data: {'input': input},
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(e) {
+          //called when there is an error
+          console.log(e.message);
+        }
+    });
+}
+
+/**Function that sends user information to PHP for DB update without hashing since the password was not updated*/
+function sendUpdatedUser(input){
+    // [Send New Account data to PHP for DB Processing]
+    console.log(input);
+    $.ajax({
+        url: 'php/updateAccount.php',
         type: 'POST',
         data: {'input': input},
         success: function(data) {
@@ -337,203 +316,63 @@ function removeUser(input){
 }
 
 function setDataSourceProjects(){
-    /**Data for the Project Table */
-    var status1 = [{
-        "Status": "In progress",
-        "ID":1
-    },
-    {
-        "Status": "Pending PM Review",
-        "ID":2
-    },
-    {
-        "Status": "PM Signed",
-        "ID":3
-    },
-    {
-        "Status": "Submitted V1",
-        "ID":4
-    },
-    {
-        "Status": "MPO Returned",
-        "ID":5 
-    },
-    {
-        "Status":"Submitted V2",
-        "ID":7
-    },    
-    {
-        "Status": "MPO Approved",
-        "ID":6
-    }];
-    var employees = [{
-        "ID": 1,
-        "Project": "Transit Route",
-        "Agency":"City of El Paso",
-        "FirstName": "John",
-        "LastName": "Heart",
-        "statusID": 1
-    },
-    {
-        "ID": 2,
-        "Project": "Bikeway",
-        "Agency": "SunMetro",
-        "FirstName": "Olivia",
-        "LastName": "Peyton",
-        "statusID": 2
-    },
-    {
-        "ID": 3,
-        "Project": "Roundabout",
-        "Agency":"SCRTD",
-        "FirstName": "Robert",
-        "LastName": "Reagan",
-        "statusID": 3
-    },
-    {
-        "ID": 4,
-        "Project": "Intersection Improvements",
-        "Agency":"TxDOT",
-        "FirstName": "Greta",
-        "LastName": "Sims",
-        "statusID": 4
-    },
-    {
-        "ID": 5,
-        "Project": "Roadyway Maintenance",
-        "Agency": "City of Horizon",
-        "FirstName": "Brett",
-        "LastName": "Wade",
-        "statusID": 5
-    },
-    {
-        "ID": 6,
-        "Project": "Bridge Construction",
-        "Agency": "City of Socorro",
-        "FirstName": "Brett",
-        "LastName": "Peterson",
-        "statusID": 6
-    },
-    {
-        "ID": 7,
-        "Project": "Transit Operation",
-        "Agency": "El Paso County",
-        "FirstName": "Jorge",
-        "LastName": "Peterson",
-        "statusID": 7
-    }];
-
-    var tasks = [
-    {
-        "ID": 2, 
-        "Subject": "Submission v1",
-        "StartDate": "2013/01/01",
-        "DueDate": "2013/01/31",
-        "Status": "Completed",
-        "Priority": "High",
-        "Completion": 100,
-        "EmployeeID": 5
-    },
-    {
-        "ID": 11,
-        "Subject": "Corrections on v1",
-        "StartDate": "2013/02/20",
-        "DueDate": "2013/02/28",
-        "Status": "Completed",
-        "Priority": "High",
-        "Completion": 100,
-        "EmployeeID": 5
-    },
-    {
-        "ID": 20,
-        "Subject": "Submission v1",
-        "StartDate": "2013/03/02",
-        "DueDate": "2013/03/12",
-        "Status": "Completed",
-        "Priority": "Normal",
-        "Completion": 100,
-        "EmployeeID": 4
-    },
-    {
-        "ID": 20,
-        "Subject": "Submission v1",
-        "StartDate": "2013/03/02",
-        "DueDate": "2013/03/12",
-        "Status": "Completed",
-        "Priority": "Normal",
-        "Completion": 100,
-        "EmployeeID": 6
-    },
-    {
-        "ID": 24,
-        "Subject": "Corrections on v1",
-        "StartDate": "2013/03/16",
-        "DueDate": "2013/03/26",
-        "Status": "Need Assistance",
-        "Priority": "Normal",
-        "Completion": 90,
-        "EmployeeID": 6
-    },
-    {
-        "ID": 41,
-        "Subject": "Submission v2",
-        "StartDate": "2013/03/28",
-        "DueDate": "2013/04/07",
-        "Status": "Completed",
-        "Priority": "Normal",
-        "Completion": 100,
-        "EmployeeID": 6
-    },
-    {
-        "ID": 138,
-        "Subject": "Corrections on v2",
-        "StartDate": "2014/03/20",
-        "DueDate": "2014/03/25",
-        "Status": "In Progress",
-        "Priority": "Normal",
-        "Completion": 40,
-        "EmployeeID": 6
-    },
-    {
-        "ID": 145,
-        "Subject": "Log of Changes",
-        "StartDate": "2014/03/26",
-        "DueDate": "2014/03/27",
-        "Status": "In Progress",
-        "Priority": "High",
-        "Completion": 25,
-        "EmployeeID": 6
-    },
-    {
-        "ID": 20,
-        "Subject": "Submission v1",
-        "StartDate": "2013/03/02",
-        "DueDate": "2013/03/12",
-        "Status": "Completed",
-        "Priority": "Normal",
-        "Completion": 100,
-        "EmployeeID": 7
-    },
-    {
-        "ID": 24,
-        "Subject": "Corrections on v1",
-        "StartDate": "2013/03/16",
-        "DueDate": "2013/03/26",
-        "Status": "Need Assistance",
-        "Priority": "Normal",
-        "Completion": 90,
-        "EmployeeID": 7
-    },
-    {
-        "ID": 41,
-        "Subject": "Submission v2",
-        "StartDate": "2013/03/28",
-        "DueDate": "2013/04/07",
-        "Status": "Completed",
-        "Priority": "Normal",
-        "Completion": 100,
-        "EmployeeID": 7
-    }];
-
-    return [status1,employees,tasks];
+    $.ajax({
+        url: '../php/retrieveSubmissions.php',
+        type: 'GET',
+        dataType:'json',
+        success: function(data) {
+            /**Create data grid from data provided */
+            $("#gridContainerProjects").dxDataGrid({
+                masterDetail: {
+                    enabled: true,
+                    template: function(container, options) { 
+                        var currentEmployeeData = options.data;
+        
+                        $("<div>")
+                            .addClass("master-detail-caption")
+                            .text(currentEmployeeData.project +  "'s Submissions:")
+                            .appendTo(container);
+                        $("<div>")
+                            .dxDataGrid({
+                                columnAutoWidth: true,
+                                showBorders: true,
+                                    editing: {
+                                    mode: "row",
+                                    allowUpdating: false,
+                                    allowDeleting: false
+                                    }, 
+                                columns: [
+                                    {
+                                    caption:"Title",
+                                    dataType:"String",
+                                    dataField:"Subject",
+                                    // editorType: "dxTextArea",
+                                    colSpan: 2,
+                                    },
+                                    {
+                                        caption:"Submitted",
+                                        dataField: "submittedDate",
+                                        dataType: "date"
+                                    },                           
+                                    {
+                                        caption:"Document",
+                                        dataField: "document",
+                                    }],
+                                dataSource: new DevExpress.data.DataSource({
+                                    store: new DevExpress.data.ArrayStore({
+                                        key: "ID",
+                                        data: data
+                                    }),
+                                    filter: ["EmployeeID", "=", options.key]
+                                })
+                            }).appendTo(container);
+                    }
+                }
+            });
+        },
+        error: function(e) {
+            //called when there is an error
+            console.log(e.message);
+        }
+    });
 }
