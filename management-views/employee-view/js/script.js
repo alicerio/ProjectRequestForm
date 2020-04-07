@@ -157,6 +157,13 @@ function setDataSourceProjects(){
                                     {
                                         caption:"Document",
                                         dataField: "document",
+                                        allowFiltering: false,
+                                        allowSorting: false,
+                                        cellTemplate: function (container, options) {
+                                            $("<div>")
+                                                .append($("<img>", { "src": "../img/pdf.png" })) 
+                                                .appendTo(container);
+                                        }
                                     }],
                                 dataSource: new DevExpress.data.DataSource({
                                     store: new DevExpress.data.ArrayStore({
