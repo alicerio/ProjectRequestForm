@@ -152,7 +152,7 @@ function setDataSourceProjects(){
                                     {
                                         caption:"Submitted",
                                         dataField: "submittedDate",
-                                        dataType: "date"
+                                        dataType: "datetime"
                                     },                           
                                     {
                                         caption:"Document",
