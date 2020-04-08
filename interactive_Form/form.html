@@ -3,11 +3,17 @@
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css'>
+  <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.material.blue.light.css'><link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+  <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link src="css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -76,212 +82,177 @@
 
 </div>
 
-<container>    <!-- your code -->
-  <!-- your divs, boxes, text, dropdown boxes, ect -->
-  <form>
-      <div class="form">
-          <label for ="yes/no">&nbsp Is the sponsor paying for 100% of PE?</label>
-          <select class = "yes/no select" id = "yes/no">
-              <option></option>
-              <option>Yes</option>
-              <option>No</option>
-          </select>
-          <br>
-          <label for = "yes/no">&nbsp Is this sponsor paying for 100% of the Row
-              and utility relocation?</label>
-          <select class= "yes/no select" id = "yes/no">
-              <option></option>
-              <option>Yes</option>
-              <option>No</option>
-          </select>
-          <br>
-          <label for = "yes/no">&nbsp Is this decision making/governing body committed to the local/state 
-              share(match)?</label>
-          <select class = "yes/no select" id = "yes/no">
-              <option></option>
-              <option>Yes</option>
-              <option>No</option>                   
-          </select>
-          <p>&nbsp Attach documentation. E.g. Resolution, Financial Plan, etc.</p>
-          <label for = "percentages">&nbsp Sponsor's investment to construction cost.
-              (Excluding required local/state share)</label>
-          <select class = "precent select" id = "percentages">
-              <option></option>
-              <option>0%</option>
-              <option>≥1% <10%</option>
-              <option>≥10% <20%</option>         
-              <option>≥20% <30%</option>
-              <option>≥30% <40%</option>  
-              <option>≥40%</option>                                  
-          </select>
+<!--Page 3 of the Form-->
+ 
+<div class="dx-viewport container">
+  <div class="row justify-content-start">
+      <div class="col">
+          <h6>Project Readiness Elements:</h6>
+          <p>"Overall" Estimate of Preliminary Engineering (PE)
+            Examples include: Project Initiation/Planning, Initial Design,
+            Environmental Document, PS&E, etc.</p>
+          <div id="project-readiness-elements"></div>
       </div>
-  </form>
-  <h5>&nbsp Project Funding</h5>
-  <div class="form-check">
-      &nbsp
-      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-      <label class="form-check-label" for="defaultCheck1"> 
-        &nbspRequesting MPO Funds (For long range planning, beyond TIP years, funding category may not be identified, 
-        MPO will make final recommendation)
-      </label>
-    </div>
-  <p>
-      &nbsp
-      <label>YOE Cost</label>
-      <input type = "text"
-             id = "YOE Cost"
-             value = "" />
-    </p>
-    <div id="table" class="table-editable">
-      <span class="table-add glyphicon glyphicon-plus"></span>
-      <table class="table">
-        <tr>
-          <th>Funding Category</th>
-          <th>Federal Share Usually 80%</th>
-          <th>State Share</th>
-          <th>Local Share Usually 20%</th>
-          <th>Local Contribution Beyond Local Share</th>
-          <th>Total Share</th>
-        </tr>
-        <tr>
-          <td contenteditable="true"></td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td>
-            <span class="table-remove glyphicon glyphicon-remove"></span>
-          </td>
-          <td>
-            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-          </td>
-        </tr>
-        <tr class="hide">
-          <td contenteditable="true"></td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td>
-            <span class="table-remove glyphicon glyphicon-remove"></span>
-          </td>
-          <td>
-            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-          </td>
-        </tr>
-        <tr class="hide2">
-          <td contenteditable="true"></td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td>
-              <span class="table-remove glyphicon glyphicon-remove"></span>
-          </td>
-          <td>
-            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-          </td>
-        </tr>
-        <tr class="final">
-          <td contenteditable="true"><span style="font-weight:bold">Total Funding by Share</span></td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-          <td contenteditable="true">$0.00</td>
-        </tr>
-      </table>
+  </div>
+  <div class="row justify-content-start">
+      <div class="col">
+          <h6>Transit Only:</h6>
+          <p>"Anticipated Dates"</p>
+          <div id="transit-only"></div>
+      </div>
+  </div>
+  <div class="row justify-content-start">
+      <div class="col-7">
+          <h6>YOE and Total Project Cost Information</h6>
+          <p>**Only checked phase(s) will be consider for funding (Year of Expenditure (YOE)
+            Cost). If a phase has been or will be completed with local funds or resources,
+            please do not check. Please enter cost information for each Phase checked</p>
+          <div id="yoe-form"></div>
+      </div>
+      <div class="col">
+          <h6>Project Phases</h6>
+          <p>
+            **All costs should account for inflation withing TIP years. Beyond TIP years inflation will be applied</p>
+          <p>**For Total Project Cost include all cost, whether it is a phase of the project or not</p>
+          <div id="project-phases"></div>
+      </div>
+  </div>
+
+  <!--Page 4 of the form-->
+
+  <!--Page for of the form Part of total project cost information-->
+  <div class="row justify-content-start">
+    <div class="col">
+      <form>
+        <div class="form">
+            <label for ="yes/no">Is the sponsor paying for 100% of PE?</label>
+            <select class = "yes/no select" id = "yes/no">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br>
+            <label for = "yes/no">Is this sponsor paying for 100% of the Row
+                and utility relocation?</label>
+            <select class= "yes/no select" id = "yes/no">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <br>
+            <label for = "yes/no">Is this decision making/governing body committed to the local/state 
+                share(match)?</label>
+            <select class = "yes/no select" id = "yes/no">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>                   
+            </select>
+            <br>
+            <label>Attach documentation. E.g. Resolution, Financial Plan, etc.</label>
+            <label for = "percentages">Sponsor's investment to construction cost.
+                (Excluding required local/state share)</label>
+            <select class = "precent select" id = "percentages">
+                <option></option>
+                <option>0%</option>
+                <option>≥1% <10%</option>
+                <option>≥10% <20%</option>         
+                <option>≥20% <30%</option>
+                <option>≥30% <40%</option>  
+                <option>≥40%</option>                                  
+            </select>
+        </div>
+      </form>
     </div>
   </div>
   <br>
-  <h5>&nbsp Contact Information</h5>
-  <form>
-      <div class="form-row">
-        <div class="form-group col-md-2">
-          <label for="PM">&nbsp</label>
-          <input type="PM" class="form-control" id="PM" placeholder="&nbsp Local PM">
-          <br>
-          <input type="PM" class="form-control" id="PM" placeholder="&nbsp State PM">
-          <br>
-          <input type="SPONSOR" class="form-control" id="SPONSOR" placeholder="&nbsp Sponsor">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="inputName">&nbsp Name</label>
-          <input type="name" class="form-control" id="inputName" placeholder="Name">
-          <br>
-          <input type="name" class="form-control" id="inputName" placeholder="Name">
-          <br>
-          <input type="name" class="form-control" id="inputName" placeholder="Name">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="inputphone">&nbsp Phone</label>
-          <input type="phone" class="form-control" id="inputphone" placeholder="Phone">
-          <br>
-          <input type="phone" class="form-control" id="inputphone" placeholder="Phone">
-          <br>
-          <input type="phone" class="form-control" id="inputphone" placeholder="Phone">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="inputmail">&nbsp eMail</label>
-          <input type="mail" class="form-control" id="inputmail" placeholder="Mail">
-          <br>
-          <input type="mail" class="form-control" id="inputmail" placeholder="Mail">
-          <br>
-          <input type="mail" class="form-control" id="inputmail" placeholder="Mail">
+  <div class="row justify-content-start">
+    <div class="col">
+      <h6>Project Funding</h6>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1"> 
+            Requesting MPO Funds (For long range planning, beyond TIP years, funding category may not be identified, 
+            MPO will make final recommendation)
+          </label>
       </div>
-      <div class="form-group col-md-2">
-          <label for="inputagency">&nbsp Agency</label>
-          <input type="agency" class="form-control" id="inputagency" placeholder="Agency">
-          <br>
-          <input type="agency" class="form-control" id="inputagency" placeholder="Agency">     
-          <br>
-          <input type="agency" class="form-control" id="inputagency" placeholder="Agency">               
+      
+      <label>YOE Cost</label>
+      <input type = "text"
+            id = "YOE Cost"
+            value = "" />
+    </div>
+  </div>
+
+  <div class="row justify-content-start">
+    <div class="col">
+        <div id="project-funding"></div>
+    </div>
+  </div>
+  
+  <br>
+  <div class="row justify-content-start">
+    <div class="col">
+      <h6>Contact Information</h6>
+        <div id="contact-information"></div>
+    </div>
+  </div>
+
+  <div class="row justify-content-start">
+    <div class="col">
+      <br>
+
+      <h6>Attachments (CMAQ Analysis, Cost Estimate, Schematic/Design Concept, etc.</h6>
+      <div style="width:1000px;height:100px;border:1px solid #000;"></div>
+      <br>
+      <button type="button" class="btn btn-outline-dark">Add File</button>
+      <button type="button" class="btn btn-outline-dark">Open File</button>
+      <button type="button" class="btn btn-outline-dark">Remove File</button>
+      <button type="button" class="btn btn-outline-dark">Show Attachment Name and Size</button>
+      <br><br>
+      <p>*Please attach any supporting documents to this form, if possivle (CMAQ
+          Analysis, Cost Estimate, Environmental Document, or other).
+      <br>
+        *Only Adobe Acrobat users may be able to attach files to this form. If you are not able to attach files, please send them via e-mail.
+      <br>
+        *This form does not guarantee the funds requested nor the approval of the project in the MTP/TIP.
+      <br>
+        *By signing this Project Request Form you certify that the project Description and limits are within the scope of work of the project.
+      <br>
+        *Please fill out this form entirely, and sign (digital signature). If "Signed By" field is blank, the form will not be accepted.</p>
+      <br>
+    </div>
+  </div>
+
+  <div class="row justify-content-start">
+    <div class="col">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Signature</span>
       </div>
-      <div class="form-group col-md-2">
-          <label for="inputtitle">&nbsp Title</label>
-          <input type="title" class="form-control" id="inputtitle" placeholder="Title">
-          <br>
-          <input type="title" class="form-control" id="inputtitle" placeholder="Title">    
-          <br>
-          <input type="title" class="form-control" id="inputtitle" placeholder="Title">     
-      </div>           
-   </div>
-  </form>
-  <h5>&nbsp Attachments (CMAQ Analysis, Cost Estimate, Schematic/Design Concept, etc.</h5>
-  <div style="width:1000px;height:100px;border:1px solid #000;"></div>
-  <br>
-  &nbsp
-  <button type="button" class="btn btn-outline-dark">Add File</button>
-  <button type="button" class="btn btn-outline-dark">Open File</button>
-  <button type="button" class="btn btn-outline-dark">Remove File</button>
-  <button type="button" class="btn btn-outline-dark">Show Attachment Name and Size</button>
-  <p>&nbsp&nbsp*Please attach any supporting documents to this form, if possivle (CMAQ
-      Analysis, Cost Estimate, Environmental Document, or other).
-  <br>
-    &nbsp&nbsp*Only Adobe Acrobat users may be able to attach files to this form. If you are not able to attach files, please send them via e-mail.
-  <br>
-    &nbsp&nbsp*This form does not guarantee the funds requested nor the approval of the project in the MTP/TIP.
-  <br>
-    &nbsp&nbsp*By signing this Project Request Form you certify that the project Description and limits are within the scope of work of the project.
-  <br><br>
-    &nbsp&nbsp*Please fill out this form entirely, and sign (digital signature). If "Signed By" field is blank, the form will not be accepted.</p>
-  <br><br><br><br><br><br><br>
-  <pre>
-  <button type="button" class="btn btn-dark">Save Form As</button></pre>
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <button type="button" class="btn btn-dark">Reset Form</button>
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <button type="button" class="btn btn-dark">Print Form</button>
-  <h5></h5>
-  <div style="width:580px;height:50px;border:1px solid #000;"></div>
-  <p>Save your form before signing, all fields will be locked after signature is provided.</p>
-</container>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      <p>Save your form before signing, all fields will be locked after signature is provided.</p>
+      <button type="button" class="btn btn-dark">Save Form As</button></pre>
+      <button type="button" class="btn btn-dark">Print Form</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- partial -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdn3.devexpress.com/jslib/19.2.6/js/dx.all.js'></script>
+  <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+  <script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--JavaScript custom-->
+  <script src="js/main.js"></script>
 
 </body>
 </html>
