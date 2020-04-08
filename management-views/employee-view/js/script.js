@@ -7,7 +7,7 @@
         success: function(data){
             //Send the user type to the table to provide proper permissions. The type of user is last element in array.
             //configTableProjects(data[data.length-1]);
-            const div = document.querySelector('.dropdown-menu');
+            const div = document.querySelector('.log-out-dropdown');
             div.innerHTML += `<a class="dropdown-item" href="#">Type: ${data[data.length-1]}</a>`;
             div.innerHTML += `<a class="dropdown-item" href="../../../requestForm_Victor/sign-in/index.html">Sign Out</a>`;
             const drop = document.querySelector('#userProfile');
@@ -164,14 +164,23 @@ function setDataSourceProjects(){
                                                 .append($("<img>", { "src": "../img/pdf.png" })) 
                                                 .appendTo(container);
                                         }
-                                    }],
+                                    }
+                                ],
                                 dataSource: new DevExpress.data.DataSource({
                                     store: new DevExpress.data.ArrayStore({
                                         key: "ID",
                                         data: data
                                     }),
                                     filter: ["EmployeeID", "=", options.key]
-                                })
+                                }),
+                                onCellClick: function(e){
+                                    if(e["columnIndex"] == 2){
+                                        //We send it to the proper document
+                                        console.log(e["data"]);
+                                    }else{
+                                        //we do not do anything
+                                    }
+                                }
                             }).appendTo(container);
                     }
                 }

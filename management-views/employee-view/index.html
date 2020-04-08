@@ -33,7 +33,7 @@
               <button id="userProfile" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 
               </button>
-              <div class="dropdown-menu">
+              <div class="dropdown-menu log-out-dropdown">
               </div>
           </div>
         </div>
@@ -46,9 +46,17 @@
   </div>
   <div id="context-menu"></div>
 
-  <br><br>
+  
   <div class="col">
-    <a class="btn btn-primary" href="/MPO_Projects/ProjectRequestForm/interactive_form/form.html" role="button">Start New Project</a>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Start project
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="btn btn-primary dropdown-item" href="/MPO_Projects/ProjectRequestForm/interactive_form/form.html" target="_blank" role="button">Start New Project TASA</a>
+        <a class="btn btn-primary dropdown-item" href="/MPO_Projects/ProjectRequestForm/interactive_form/form.html" target="_blank" role="button">Start New Project 5310</a>
+      </div>
+    </div>
   </div>
   
 
