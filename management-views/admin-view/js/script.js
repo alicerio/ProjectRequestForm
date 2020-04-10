@@ -267,7 +267,7 @@ function sendNewUser(input){
     // [Send New Account data to PHP for DB Processing]
     console.log(input);
     $.ajax({
-        url: '../../sign-in/php/newAccount.php',
+        url: 'php/newAccount.php',
         type: 'POST',
         data: {'input': input},
         success: function(data) {
@@ -371,7 +371,15 @@ function setDataSourceProjects(){
                                         data: data
                                     }),
                                     filter: ["EmployeeID", "=", options.key]
-                                })
+                                }),
+                                onCellClick: function(e){
+                                    if(e["columnIndex"] == 2){
+                                        //We send it to the proper document
+                                        console.log(e["data"]);
+                                    }else{
+                                        //we do not do anything
+                                    }
+                                }
                             }).appendTo(container);
                     }
                 }

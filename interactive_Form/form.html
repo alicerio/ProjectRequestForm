@@ -540,20 +540,29 @@ transit facilities that offer a significant alternative to regional highway trav
           <div id="transit-only"></div>
       </div>
   </div>
+
+  <!--Project Readiness Elements Footer Before Phases-->
+  <p style="font-size:90%;">Have the above dates been reviewed by TXDOT or NMDOT? (Select proper checkbox below)</p>
   <div class="row justify-content-start">
-      <div class="col-7">
+    <div class="col">
+      <div id = "project-readiness-elements-footer"></div>
+    </div>
+  </div>
+  <br><br>
+  <div class="row justify-content-start">
+    <div class="col">
+      <h6>Project Phases</h6>
+      <p>
+        **All costs should account for inflation withing TIP years. Beyond TIP years inflation will be applied</p>
+      <p>**For Total Project Cost include all cost, whether it is a phase of the project or not</p>
+      <div id="project-phases"></div>
+    </div>  
+    <div class="col-7">
           <h6>YOE and Total Project Cost Information</h6>
           <p>**Only checked phase(s) will be consider for funding (Year of Expenditure (YOE)
             Cost). If a phase has been or will be completed with local funds or resources,
             please do not check. Please enter cost information for each Phase checked</p>
           <div id="yoe-form"></div>
-      </div>
-      <div class="col">
-          <h6>Project Phases</h6>
-          <p>
-            **All costs should account for inflation withing TIP years. Beyond TIP years inflation will be applied</p>
-          <p>**For Total Project Cost include all cost, whether it is a phase of the project or not</p>
-          <div id="project-phases"></div>
       </div>
   </div>
 
@@ -615,15 +624,20 @@ transit facilities that offer a significant alternative to regional highway trav
           </label>
       </div>
       
-      <label>YOE Cost</label>
+      <label for="YOE Cost">YOE Cost</label>
       <input type = "text"
             id = "YOE Cost"
             value = "" />
     </div>
   </div>
-
   <div class="row justify-content-start">
     <div class="col">
+        <div id ="add-funding" class="float-right"></div>
+    </div>
+  </div>
+  <div class="row justify-content-start">
+    <div class="col">
+        <div id ="add-funding" class="float-right"></div>
         <div id="project-funding"></div>
     </div>
   </div>
@@ -643,10 +657,11 @@ transit facilities that offer a significant alternative to regional highway trav
       <h6>Attachments (CMAQ Analysis, Cost Estimate, Schematic/Design Concept, etc.</h6>
       <div style="width:1000px;height:100px;border:1px solid #000;"></div>
       <br>
-      <button type="button" class="btn btn-outline-dark">Add File</button>
-      <button type="button" class="btn btn-outline-dark">Open File</button>
+      
+      <button type="button" class="file btn btn-outline-dark">
+        <input type="file" name = "file">
+      </button>
       <button type="button" class="btn btn-outline-dark">Remove File</button>
-      <button type="button" class="btn btn-outline-dark">Show Attachment Name and Size</button>
       <br><br>
       <p>*Please attach any supporting documents to this form, if possivle (CMAQ
           Analysis, Cost Estimate, Environmental Document, or other).

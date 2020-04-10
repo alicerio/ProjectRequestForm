@@ -29,3 +29,14 @@
     background-color: rgba(191, 191, 191, 0.16);
     border-style: groove;
 }
+.dx-field-item{
+    padding: 0px!important;
+}
+
+.dx-field-item-label{
+    padding: 0px;
+    margin-bottom: 0px;
+}
+.dx-toolbar .dx-toolbar-items-container{
+    height: 45px;
+}
