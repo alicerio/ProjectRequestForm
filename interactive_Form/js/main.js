@@ -5,51 +5,52 @@
     projectPhasesForm();
     projectFunding();
     contactInformation();
+    projectReadinessElementsFooter();
 })(jQuery);
 
 function configureProjectReadinessElementsTable(element){
     rows = [
         {
-            "header":"Schematic"
+            "Element":"Schematic"
         },
         {
-            "header":"Env. Doc. Type"
+            "Element":"Env. Doc. Type"
         },
         {
-            "header":"Environmental Doc"
+            "Element":"Environmental Doc"
         },
         {
-            "header":"PS&E"
+            "Element":"PS&E"
         },
         {
-            "header":"ROW Map(s)"
+            "Element":"ROW Map(s)"
         },
         {
-            "header":"ROW Acquired"
+            "Element":"ROW Acquired"
         },
         {
-            "header":"Utilities"
+            "Element":"Utilities"
         },
         {
-            "header":"Public Involvement"
+            "Element":"Public Involvement"
         },
         {
-            "header":"District Review"
+            "Element":"District Review"
         },
         {
-            "header":"Agreement (LPFA)"
+            "Element":"Agreement (LPFA)"
         },
         {
-            "header":"Procurement Process"
+            "Element":"Procurement Process"
         },
         {
-            "header":"Let Date"
+            "Element":"Let Date"
         },
         {
-            "header":"Construction Performance End Date"
+            "Element":"Construction Performance End Date"
         },
         {
-            "header":"PE Performance End Date"
+            "Element":"PE Performance End Date"
         }
     ]
 
@@ -79,7 +80,7 @@ function configureProjectReadinessElementsTable(element){
         showBorders:true,
         columns:[
             {
-                dataField:"header",
+                dataField:"Element",
                 allowEditing:false
             },
             {
@@ -114,27 +115,43 @@ function configureProjectReadinessElementsTable(element){
                 dataField:"Comments",
             }
         ],
-    });
+        onEditorPreparing: function(e) {
+            if((e['row']['data']['Element']==="Let Date"
+            ||  e['row']['data']['Element']==="Construction Performance End Date"
+            ||  e['row']['data']['Element']==="PE Performance End Date") 
+            && (e['dataField']==="Progress" 
+                || e['dataField']==="RespAgency" 
+                || e['dataField']==="Comments")){
+                e.editorOptions.readOnly = true;
+            }
 
+            // e['dataField'] = "Progress";
+            // e.editorOptions.readOnly = true;
+            // e['dataField'] = "RespAgency";
+            // e.editorOptions.readOnly = true;
+            // e['dataField'] = "Progress";
+            // e.editorOptions.readOnly = true;
+        }
+    });
 
 }
 
 function transitOnly(element){
     rows = [
         {
-            "header":"FTA Transfer process (if applicable)"
+            "Element":"FTA Transfer process (if applicable)"
         },
         {
-            "header":"Active in FTA System"
+            "Element":"Active in FTA System"
         },
         {
-            "header":"Contract Executed for Bus Purchase"
+            "Element":"Contract Executed for Bus Purchase"
         },
         {
-            "header":"Bus Delivery Date"
+            "Element":"Bus Delivery Date"
         },
         {
-            "header":"Other"
+            "Element":"Other"
         }
     ]
 
@@ -164,7 +181,7 @@ function transitOnly(element){
         showBorders:true,
         columns:[
             {
-                dataField:"header",
+                dataField:"Element",
                 allowEditing:false,
             },
             {
@@ -190,7 +207,7 @@ function transitOnly(element){
                 }
             },
             {
-                dataField:"RespAgency",
+                dataField:"ResponsibleAgency",
                 lookup:{
                     dataSource:agencies
                 }
@@ -232,7 +249,7 @@ function totalProjectCostForm(){
         formData: costs,
         readOnly: false,
         labelLocation: "left",
-        colCount: 2,
+        colCount:1,
         items:[
             {
                 dataField:"Construction Subtotal",
@@ -333,47 +350,38 @@ function projectPhasesForm(){
             {
                 dataField:"FTA Transfer Requested",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"C",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"Non C",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"PE",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"E:Env",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"E:Eng",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"R",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"R:Acq",
                 editorType: "dxCheckBox",
-
             },
             {
                 dataField:"R:Utl",
                 editorType: "dxCheckBox",
-
             },
         ]
     }).dxForm("instance").validate();
@@ -396,10 +404,11 @@ function projectFunding(){
             mode: "row",
             allowUpdating: false,
             allowDeleting: true,
-            allowAdding: true
+            allowAdding: false
         },
         columnAutoWidth:false,
         showBorders:true,
+        wordWrapEnabled:true,
         columns:[
             {
                 dataField:"fundingCategories",
@@ -427,19 +436,25 @@ function projectFunding(){
             }
         ],
     });
+    $("#add-funding").dxButton({  
+        text: "Add a Row",  
+        onClick: function () {  
+            $('#project-funding').dxDataGrid("instance").insertRow();  
+        }  
+    })  
 
 }
 
 function contactInformation(){
     rows = [
         {
-            "header":"Local PM"
+            "Role":"Local PM"
         },
         {
-            "header":"State PM"
+            "Role":"State PM"
         },
         {
-            "header":"Sponsor"
+            "Role":"Sponsor"
         }
     ]
     $("#contact-information").dxDataGrid({
@@ -454,7 +469,7 @@ function contactInformation(){
         showBorders:true,
         columns:[
             {
-                dataField:"header",
+                dataField:"Role",
                 allowEditing:false
             },
             {
@@ -482,4 +497,56 @@ function contactInformation(){
     });
     
     
+}
+
+function projectReadinessElementsFooter(){
+    footerElems=[
+        {
+            "Have the above dates been reviewed by TXDOT or NMDOT":"",
+            "Yes":"",
+            "No":"",
+            "N/A":"",
+            "DateReviewed":"",
+            "ReviewedBy":"",
+            "Agency":"",
+        }
+    ]
+    $("#project-readiness-elements-footer").dxForm({
+        formData: footerElems,
+        readOnly: false,
+        labelLocation: "left",
+        colCount: 4,
+        items:[
+            {
+                dataField:"Yes",
+                editorType: "dxCheckBox",
+            },
+            {
+                dataField:"No",
+                editorType: "dxCheckBox",
+            },
+            {
+                dataField:"N/A",
+                editorType: "dxCheckBox",
+            },
+            {
+                dataField:"DateReviewed",
+                editorType: "dxDateBox",
+            },
+            {
+                dataField:"ReviewedBy",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+            {
+                dataField:"Agency",
+                editorType: "dxTextArea",
+                editorOptions: {
+                    height: 40
+                }
+            },
+        ]
+    }).dxForm("instance").validate();
 }
