@@ -1,9 +1,11 @@
 $(function() {
     $("#transit_Analysis_Form").dxForm({
         formData: CMAQAnalysis,
-        items: [ {
+        labelLocation: "left",
+        items: [ 
+            {
             itemType: "group",
-            cssClass: "second-group",
+            cssClass: "first-group",
             colCount: 1,
             items: [{
                 itemType: "group",
@@ -18,7 +20,8 @@ $(function() {
                   {
                     dataField: "CO",
                     label: {
-                        text: "Apportionment Year"
+                        text: "Apportionment Year",
+                        labelLocation: "right",
                     }
                   }, 
                   {
@@ -40,20 +43,56 @@ $(function() {
                         text: "TDC Amount Requested"
                     }
                   }
-                ]
-            
-            }]
+                ]            
+            }]  
+        },
+    ]
+    });
+});
+$(function() {
+    $("#transit_Analysis_Form_Radio").dxForm({
+        formData: CMAQAnalysis,
+        labelLocation: "right",
+        items: [ 
+            {
+            itemType: "group",
+            formData: CMAQAnalysis,
+            labelLocation: "right",
+            readOnly: false,
+            colCount: 1,
+            text:"Brian",
+            items:[
+                {
+                    dataField:"Capital",
+                    editorType: "dxCheckBox",
+                  },
+                  {
+                    dataField:"Operating",
+                    editorType: "dxCheckBox",
+                  },
+                  {
+                    dataField:"Planning",
+                    editorType: "dxCheckBox",
+                  },
+                  {
+                    dataField:"Administration",
+                    editorType: "dxCheckBox",
+                  }
+            ]
         }]
     });
 });
-
     var CMAQAnalysis = {
         "ID": 1,
         "VOC": "",
         "CO":"",
         "NOX": "",
         "PM10":"",
-        "Prepared_By": ""
-        
+        "Prepared_By": "",
+
+        "Capital":"",
+        "Operating":"",
+        "Planning":"",
+        "Administration":""
     };
 

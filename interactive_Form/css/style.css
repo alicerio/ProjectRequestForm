@@ -15,4 +15,17 @@
     padding-top: 0px;
     
 }
-
+#userProfile
+{
+    color: #ffffff;
+    background-color: #aaaaaa;
+    font-size: 18px;
+}
+#CMAQ_Analysis{
+    background-color: rgba(191, 191, 191, 0.15);
+    border-style: groove;
+}
+#transit_Analysis{
+    background-color: rgba(191, 191, 191, 0.16);
+    border-style: groove;
+}

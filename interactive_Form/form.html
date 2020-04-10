@@ -19,6 +19,7 @@
 
   <!-- page 1 -->
 <div class = "container">
+
   <div class = "row">
     <div class="form-group col-md-4">
         <img src="../img/logos.png" class="img-fluid" alt="Responsive image">
@@ -28,11 +29,12 @@
       <h3 class="text-center">ePRF <br>Electornic Project Request Form</h3>
     </div>
   </div>
+  
   <div class = "row float-right">
     <p>
       <i>
-       <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Date: 
           <strong>
+            <p>Date:&nbsp; </p>
               <p id="datetime" style="text-decoration: underline;"></p>
               <script>
                   var dt = new Date();
@@ -56,12 +58,10 @@
   </div>
 
   <div class= "row form-group">
-    <div class="form-check form-check-inline">
-      <label class="form-check-label col-md-10" for="inlineRadio3">Is the decision making/governing body of your agency committed to this project?</label>
-      <div class="col-md-2">
-        <label class="radio-inline"><input type="radio" name="decision">Yes</label>
-        <label class="radio-inline"><input type="radio" name="decision"> No</label>
-      </div>
+    <label class="form-check-label col-md-7" for="inlineRadio3">Is the decision making/governing body of your agency committed to this project?</label>
+    <div class="form-check col-md-2">
+        <label class=""><input type="radio" name="decision">Yes</label>
+        <label class=""><input type="radio" name="decision"> No</label>
     </div>
   </div>
   
@@ -79,19 +79,19 @@
   <div>
     <div class = "row form-group">
       <label class="col-md-2">Project Name</label>
-      <input class="col-md-4">
+      <input class="col-md-10">
     </div>
     <div class = "row form-group">
       <label class="col-md-2">Project Description</label>
-      <input class="col-md-4">
+      <input class="col-md-10">
     </div>
     <div class = "row form-group">
       <label class="col-md-2">Limit From</label>
-      <input class="col-md-4">
+      <input class="col-md-10">
     </div>
     <div class = "row form-group">
       <label class="col-md-2">Limit To</label>
-      <input class="col-md-4">
+      <input class="col-md-10">
     </div>
   </div>
 
@@ -134,14 +134,13 @@ transit facilities that offer a significant alternative to regional highway trav
   <div class = "row">
     <div class="form-check-label col-md-6">
         
-      <div class = "row">
-         <label class ="col-md-4"><b>Federal Fiscal Year(FY)</b></label>
-         <textarea class="form-control form-group col-md-8" id="federal_fiscal_year"></textarea>
+      <div class = "row form-check">
+         <label class ="col-md-5"><b>Federal Fiscal Year(FY)</b></label>
+         <input class ="col-md-6"type="number" id="quantity" name="quantity" min="2010" max="2200" row = "1">
       </div>
       
-      
-      <div class="input-group mb-3 row">
-        <label class ="col-md-6"for="net_year">Network Year</label>
+      <div class="input-group row form-check">
+        <label class ="col-md-5"for="net_year">Network Year</label>
         <select  class="custom-select form-group col-md-6" id="net_year">
           <option selected>...</option>
           <option value="1">2020</option>
@@ -152,25 +151,40 @@ transit facilities that offer a significant alternative to regional highway trav
         </select>
       </div>
 
-      <div class = "row">
-        <label class ="col-md-4">Number of Existing Lanes</label>
-        <textarea class="form-control form-group col-md-8" id="num_ex_year"></textarea>
+      <div class = "form-check m-3">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="on_state_sys">
+          <label class="custom-control-label" for="on_state_sys">ON-State system road</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="off_state_sys">
+          <label class="custom-control-label" for="off_state_sys">OFF-State system road</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="capacity_project">
+          <label class="custom-control-label" for="capacity_project">Capacity Project (Additional through lanes)</label>
+        </div>
       </div>
-      <div class = "row">
-        <label class ="col-md-4">Number of Projected Lanes</label>
-        <textarea class="form-control form-group col-md-8" id="num_project_lanes"></textarea>
+
+      <div class = "row form-check">
+        <label class ="col-md-5">Number of Existing Lanes</label>
+        <input class ="col-md-6"type="number" row = "1">
       </div>
-      <div class = "row">
-      <label class ="col-md-4">Number of miles</label>
-      <textarea class="form-control form-group col-md-8" id="num_of_mi"></textarea>
+      <div class = "row form-check">
+        <label class ="col-md-5">Number of Projected Lanes</label>
+        <input class ="col-md-6"type="number" id="quantity" row = "1">
+      </div>
+      <div class = "row form-check">
+      <label class ="col-md-5">Number of miles</label>
+      <input class ="col-md-6"type="number" row = "1">
       </div>
     </div>
 
     <div class="form-check-label col-md-6">
 
-      <div class ="row">
-        <label class="form-group col-md-4" >Highway/Roadway Name</label>
-        <textarea class="form-control form-group col-md-8" id="highway_roadway"></textarea>
+      <div class ="row form-group">
+        <label class="col-md-5">Highway/Roadway Name</label>
+        <textarea class="form-control col-md-7" id="highway_roadway" rows ="1"></textarea>
       </div>
 
   
@@ -260,9 +274,9 @@ transit facilities that offer a significant alternative to regional highway trav
       </select>
     </div>
     
-    <div class = "row">
-      <label class="form-group col-md-3">Sponsor Entity</label>
-      <textarea class="form-control col-md-9 id="num_of_mi"></textarea>
+    <div class = "row mb-3">
+      <label class="col-md-4">Sponsor Entity</label>
+      <textarea class="col-md-8" id="num_of_mi" rows="1"></textarea>
     </div>
     
   </div>
@@ -278,61 +292,68 @@ transit facilities that offer a significant alternative to regional highway trav
 <div class="container">
   <h2>Project Selection Process </h2>
 
-  <div>
-      <label class="form-group col-md-12" for="reduction">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
-          If yes, please provide link or attachment with supporting data</label>
-          <select class="form-group col-md-2"id="reduction" class="form-control">
-              <option selected></option>
-              <option>Yes</option>
-              <option>No</option>
-          </select>
+  <div class = "row">
+    <select class="form-group col-md-2"id="reduction" class="form-control">
+      <option selected>...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+    <label class="form-group col-md-10" for="reduction">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
+          If yes, please provide link or attachment with supporting data
+    </label>
+
+
+
   </div>
 
 
-  <div>
-      <label class="form-group col-md-12" for="reduction">Is this project from an updated comprehensive plan, thoroughfare plan, feasibility or corridor study?
+  <div class = "row">
+    <select class="form-group col-md-2"id="reduction" class="form-control">
+      <option selected>...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+    <label class="form-group col-md-10" for="reduction">Is this project from an updated comprehensive plan, thoroughfare plan, feasibility or corridor study?
           If yes, please provide link or attachment:
-          Excerpt from corridor plan attached (too large to attach whole document)</label>
-      <select class="form-group col-md-2"id="reduction" class="form-control">
-        <option selected></option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+          Excerpt from corridor plan attached (too large to attach whole document)
+    </label>
   </div>
 
-  <div>
-      <label class="form-group col-md-12" for="reduction">Is this project on the National Highway System NHS?</label>
-      <select class="form-group col-md-2"id="reduction" class="form-control">
-        <option selected></option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+  <div class="row">
+    <select class="form-group col-md-2"id="reduction" class="form-control">
+      <option selected>...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+      <label class="form-group col-md-10" for="reduction">Is this project on the National Highway System NHS?</label>
   </div>
 
-  <div>
-      <label class="form-group col-md-12" for="reduction">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
+  <div class = "row">
+    <select class="form-group col-md-2"id="reduction" class="form-control">
+      <option selected>...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+      <label class="form-group col-md-10" for="reduction">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
           If yes, please provide link or attachment with supporting data</label>
-      <select class="form-group col-md-2"id="reduction" class="form-control">
-        <option selected></option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
   </div>
-  <div>
-      <label class="form-group col-md-12" for="reduction">Is this project part of TPB resolution for the Active Transportation System?</label>
-      <select class="form-group col-md-2"id="reduction" class="form-control">
-        <option selected></option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+
+  <div class="row">
+    <select class="form-group col-md-2"id="reduction" class="form-control">
+      <option selected>...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+      <label class="form-group col-md-10" for="reduction">Is this project part of TPB resolution for the Active Transportation System?</label>
   </div>
-  <div>
-      <label class="form-group col-md-12" for="reduction">Is this project part of TPB resolution for a Comprehensive Mobility Plan (CMP)?</label>
-      <select class="form-group col-md-2"id="reduction" class="form-control">
-        <option selected></option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+
+  <div class = "row">
+    <select class="form-group col-md-2"id="reduction" class="form-control">
+      <option selected>...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+    <label class="form-group col-md-10" for="reduction">Is this project part of TPB resolution for a Comprehensive Mobility Plan (CMP)?</label>
   </div>
 <!-- -->
 <div class="row">
@@ -455,22 +476,31 @@ transit facilities that offer a significant alternative to regional highway trav
 </div>
 </div>
 <div class="row form-group">
-<div id = "CMAQ_Analysis" class = "col-md-6">
+<div id = "CMAQ_Analysis" class = "col-md-4">
   <h4 class = "text-center">CMAQ Analysis</h4>
   <p class = "text-center">*Air Quality Analysis MUST   accompany request for CMAQ Funds.</p>
   <div class= "dx-viewport demo-container">
     <div id="CMAQ_Analysis_Form"></div>
   </div> 
 </div>
+<div  class = "col-md-2">
 
-<div id = "transit_Analysis" class = "col-md-6">
+</div>
+<div id = "transit_Analysis" class = "col-md-4">
   <h4 class = "text-center">**Transit Only</h4>
   <p></p>
     <div class= "dx-viewport demo-container">
       <div id="transit_Analysis_Form"></div>
-    </div> 
+      <h6>Project Type:</h6>
+      <div class = "col-md-3" id="transit_Analysis_Form_Radio"></div>
+    </div>
+
+
 </div>
+
+
 </div>
+
 
 
 <div class="form-group col-md-12">
