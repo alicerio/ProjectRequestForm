@@ -71,7 +71,7 @@ function configureProjectReadinessElementsTable(element){
     $("#"+element).dxDataGrid({
         dataSource:rows,
         editing: {
-            mode: "popup",
+            mode: "row",
             allowUpdating: true,
             allowDeleting: false,
             allowAdding: false
@@ -172,7 +172,7 @@ function transitOnly(element){
     $("#"+element).dxDataGrid({
         dataSource:rows,
         editing: {
-            mode: "popup",
+            mode: "row",
             allowUpdating: true,
             allowDeleting: false,
             allowAdding: false
