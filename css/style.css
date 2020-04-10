@@ -43,12 +43,9 @@ body {
     padding-top: 25px;
 }
 
-#userProfile
-{
-    color: #ffffff;
-    background-color: #aaaaaa;
-    font-size: 18px;
-}
+
+
+
 
 @media only screen and (min-width: 1000px)
 {
