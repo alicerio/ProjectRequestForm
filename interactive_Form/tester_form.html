@@ -8,34 +8,59 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script  src="js/testerLogic.js"></script>
+  <script  src="js/logOfChanges.js"></script>
 </head>
 <body>
 
-<div class="container">
-  <h2>Tester form</h2>
-  <a class="btn btn-primary" href="/MPO_Projects/requestForm_Brian/management-views/employee-view" onclick="testA()" role="button">Exit and Save</a>
-  <form action="/action_page.php">
-    <div class="form-group">
-      <label>Info 1</label>
-      <input class="form-control" id="info1" placeholder="Info 1 Example">
+  <div class="form-check-label col-md-6" id = "formTest">
+        
+    <div class = "row form-check">
+       <label class ="col-md-5"><b>Federal Fiscal Year(FY)</b></label>
+       <input class ="col-md-6"type="number" id="fedFiscYear" name="quantity" min="2010" max="2200" row = "1">
     </div>
-    <div class="form-group">
-      <label>Info 2</label>
-      <input class="form-control" id="info2" placeholder="Info 2 example" >
-    </div>
-    <div class="form-group">
-        <label>Info 3</label>
-        <input class="form-control" id="info3" placeholder="Info 3 Example">
-      </div>
-    <div class="form-group">
-        <label>Info 4</label>
-        <input class="form-control" id="info4" placeholder="Info 4 example" >
+    
+    <div class="input-group row form-check">
+      <label class ="col-md-5"for="net_year">Network Year</label>
+      <select  class="custom-select form-group col-md-6" id="net_year">
+        <option selected>...</option>
+        <option value="1">2020</option>
+        <option value="2">2030</option>
+        <option value="3">2040</option>
+        <option value="4">2045</option>
+        <option value="5">2045</option>
+      </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+    <div class = "form-check m-3">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="on_state_sys">
+        <label class="custom-control-label" for="on_state_sys">ON-State system road</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="off_state_sys">
+        <label class="custom-control-label" for="off_state_sys">OFF-State system road</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="capacity_project">
+        <label class="custom-control-label" for="capacity_project">Capacity Project (Additional through lanes)</label>
+      </div>
+    </div>
+
+    <div class = "row form-check">
+      <label class ="col-md-5">Number of Existing Lanes</label>
+      <input class ="col-md-6"type="number" row = "1" id ="numExistingLanes">
+    </div>
+    <div class = "row form-check">
+      <label class ="col-md-5">Number of Projected Lanes</label>
+      <input class ="col-md-6"type="number" row = "1" id = "numProjectedLanes">
+    </div>
+    <div class = "row form-check">
+      <label class ="col-md-5">Number of miles</label>
+      <input class ="col-md-6"type="number" row = "1" id = "miles">
+    </div>
+  </div>
+
+  <button onclick="getAllValues()">Save</button>
 
 </body>
 </html>
