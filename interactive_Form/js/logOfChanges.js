@@ -19,8 +19,8 @@ function getAllValues() {
         var type = $(this).prop("type");
 
         // checked radios/checkboxes
-        if ((type == "checkbox" || type == "radio") && this.checked) { 
-            inputValues[$(this).attr("id")] = $(this).val();
+        if ((type == "checkbox" || type == "radio")) { 
+            inputValues[$(this).attr("id")] = $(this).is(':checked');
         }
         // all other fields, except buttons
         else if (type != "button" && type != "submit") {
