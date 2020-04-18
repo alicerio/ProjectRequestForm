@@ -33,13 +33,15 @@ function getAllValues() {
 }
 
 function checkForChanges(changes){
+    currChanges = []
     for(var key in form) { 
         if(form[key] == changes[key]) {
             continue;
         }
         else {
-            logOfChanges.push("Change in: " + key)
+            currChanges.push("Change in: " + key)
         }
     }
+    logOfChanges.push(currChanges);
     console.log(logOfChanges);
 }
