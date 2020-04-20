@@ -231,7 +231,7 @@ function totalProjectCostForm(){
         {
             "fundingCategory":"Non-Construction Project",
             "amount":0,
-            "ID": 1                                      // Idetifier that determines if the sumation should go to the subtoal.
+            "ID": 1                       // Idetifier that determines if the sumation should go to the subtoal.
         },
         {
             "fundingCategory":"Construction",
@@ -280,14 +280,14 @@ function totalProjectCostForm(){
         showBorders: true,
         editing: {                                          
             mode: "batch",
-            allowUpdating: true,                            // Allows user to edit data grid.
+            allowUpdating: true,                       
         },
         columnAutoWidth:true,
         showBorders:true,
         columns:[
             {
                 dataField:"fundingCategory",
-                allowEditing:false                          // Funding Category cannot be edited.
+                allowEditing:false                   
             },
             {
                 dataField:"amount",
@@ -299,7 +299,7 @@ function totalProjectCostForm(){
         ],
         selectedRowKeys: [1,2,3,4,5],                       // Rows that add to the subtotal field.
         summary: {
-            recalculateWhileEditing: true,                  // Recalculates the sum each time the data is changed.
+            recalculateWhileEditing: true,    
             totalItems: [{
                 name: "SelectedRowsSummary",
                 showInColumn: "amount",
