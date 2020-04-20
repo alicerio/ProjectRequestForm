@@ -387,26 +387,50 @@ function projectPhasesForm(){
     }).dxForm("instance").validate();
 }
 
+
 function projectFunding(){
     row = [
+        //  Left funding categories as String the rest turned into floats        {
+        {   
+        "fundingCategories":"*Fund Category 1",
+        "fedShare":200.0,
+        "stateShare":100.0,
+        "locShare":1200.0,
+        "locCont":1110.0,
+        "totalShare":0.0
+        },
+        {
+        "fundingCategories":"*Fund Category 2",
+        "fedShare":0.0,
+        "stateShare":0.0,
+        "locShare":0.0,
+        "locCont":0.0,
+        "totalShare":0.0
+        },
         {
         "fundingCategories":"Total Funding By Share",
-        "fedShare":"0.0",
-        "stateShare":"0.0",
-        "locShare":"0.0",
-        "locCont":"0.0",
-        "totalShare":"0.0"
+
         }
+
     ]
     $("#project-funding").dxDataGrid({
-        dataSource:row,
+        dataSource: row,
+        showBorders: true,
+        repaintChangesOnly: true,
+        
         editing: {
-            mode: "row",
-            allowUpdating: false,
+            mode: "cell",
+            allowUpdating: true,
             allowDeleting: true,
-            allowAdding: false
-        },
-        columnAutoWidth:false,
+            allowAdding: true,
+            },       
+            // mode: "batch",
+            // allowUpdating: true,
+            // allowDeleting: true,
+            // allowAdding: true
+            // }],
+        
+        columnAutoWidth:true,
         showBorders:true,
         wordWrapEnabled:true,
         columns:[
@@ -435,6 +459,47 @@ function projectFunding(){
                 caption:"Total Share"
             }
         ],
+        summary: {
+            recalculatingWhileEditing: true,
+            totalItems: [{
+                column: "fedShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency"
+            },{
+                column: "stateShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency"
+            },{
+                column: "locShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency"
+            },{
+                column: "locCont",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency"
+            },{
+                column: "totalShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+                alignByColumn: true
+
+        }]
+        // ,
+        //     totalItems: [{
+        //         column:"fedShare",
+        //         summaryType: "sum",
+        //         displayFormat: "{0} ",
+        //         valueFormat: "currency",
+        //         showInColumb: "totalShare",
+
+        //     }]
+    }
+    // So far have added, realtime calculations for all columbs
     });
     $("#add-funding").dxButton({  
         text: "Add a Row",  
@@ -444,6 +509,11 @@ function projectFunding(){
     })  
 
 }
+// var totals = [{
+//     "ID" : 1;
+
+// }]
+
 
 function contactInformation(){
     rows = [
