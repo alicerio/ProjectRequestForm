@@ -1,7 +1,10 @@
 (function($){  
     configureProjectReadinessElementsTable("project-readiness-elements");
 })(jQuery);
+//We initialize here with empty values
+var dxgridvals = $("#project-readiness-elements").dxDataGrid("instance").getDataSource().items();
 
+//we initialize here since the first one has empty values
 var form = [
     {
         quantity: "",
@@ -31,23 +34,49 @@ function getAllValues() {
             inputValues[$(this).attr("id")] = $(this).val();
         }
     })
-    console.log(inputValues);
-    console.log($("#project-readiness-elements").dxDataGrid("instance").getDataSource().items());
-    checkForChanges(inputValues);
+
+    var dxgridChanges = $("#project-readiness-elements").dxDataGrid("instance").getDataSource().items();
+    console.log(dxgridChanges);
+    console.log(dxgridvals);
+    checkForChangesInForm(inputValues);
+    checkForChangesInDx(dxgridChanges);
     form = inputValues;
+    dxgridvals = dxgridChanges;
 }
 
-function checkForChanges(changes){
+/**
+ * Function that checks for changes in a dx data grid, since it needs to stringify with JSON
+ * @param {*} changes 
+ */
+function checkForChangesInDx(changes){
     currChanges = []
-    for(var key in form) { 
+    for(var key in dxgridvals) {
+        if(JSON.stringify(dxgridvals[key]) === JSON.stringify(changes[key])){
+            continue;
+        }
+        else {
+            currChanges.push("Change in: " + dxgridvals[key]['Element']);
+        }
+    }
+    if(currChanges.length >= 1){
+        logOfChanges.push(currChanges);
+    }
+    console.log(logOfChanges);
+}
+
+
+/**Function that checks for changes on the form values to determine if something changed*/
+function checkForChangesInForm(changes){
+    currChanges = []
+    for(var key in form) {
         if(form[key] == changes[key]) {
             continue;
         }
         else {
-            currChanges.push("Change in: " + key)
+            currChanges.push("Change in: " + key);
         }
     }
-    if(currChanges.lenght == 1){
+    if(currChanges.length >= 1){
         logOfChanges.push(currChanges);
     }
         
