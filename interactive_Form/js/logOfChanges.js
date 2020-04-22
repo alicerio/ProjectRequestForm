@@ -2,7 +2,7 @@
     configureProjectReadinessElementsTable("project-readiness-elements");
 })(jQuery);
 //We initialize here with empty values
-var dxgridvals = $("#project-readiness-elements").dxDataGrid("instance").getDataSource().items();
+var dxgridvals = JSON.stringify($("#project-readiness-elements").dxDataGrid("instance").getDataSource().items());
 
 //we initialize here since the first one has empty values
 var form = [
@@ -35,9 +35,7 @@ function getAllValues() {
         }
     })
 
-    var dxgridChanges = $("#project-readiness-elements").dxDataGrid("instance").getDataSource().items();
-    console.log(dxgridChanges);
-    console.log(dxgridvals);
+    var dxgridChanges = JSON.stringify($("#project-readiness-elements").dxDataGrid("instance").getDataSource().items());
     checkForChangesInForm(inputValues);
     checkForChangesInDx(dxgridChanges);
     form = inputValues;
@@ -50,6 +48,10 @@ function getAllValues() {
  */
 function checkForChangesInDx(changes){
     currChanges = []
+    //Will parse back objects for traversal
+    dxgridvals = JSON.parse(dxgridvals);
+    changes = JSON.parse(changes);
+
     for(var key in dxgridvals) {
         if(JSON.stringify(dxgridvals[key]) === JSON.stringify(changes[key])){
             continue;
