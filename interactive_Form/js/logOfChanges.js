@@ -90,17 +90,16 @@ function checkForChangesInForm(changes){
  */
 function seeLog(){
     var logWindow = window.open('http://127.0.0.1:5500/interactive_Form/log.html', '_blank');
-    // Create an unordered list
-    var changes = logWindow.document.createElement('ul');
+    logWindow.onload = function() {
+        var holder = logWindow.document.getElementById("holder");
 
-    // Create a list item for each change
-    // and append it to the list
-    logOfChanges.forEach(function (change) {
-        var li = document.createElement('li');
-        li.textContent = "JSON.stringify(change)";
-        changes.appendChild(li);
-    });
-    logWindow.document.body.appendChild(changes);
+        // Create a list item for each change
+        // and append it to the list
+        logOfChanges.forEach(function (change) {
+            holder.innerHTML += "<p>"+change+"</p><br>";
+        });
+    }
+
 }
 
 /**
