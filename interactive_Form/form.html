@@ -556,6 +556,21 @@ transit facilities that offer a significant alternative to regional highway trav
       <p>
         **All costs should account for inflation withing TIP years. Beyond TIP years inflation will be applied</p>
       <p>**For Total Project Cost include all cost, whether it is a phase of the project or not</p>
+
+      <!--Radio checkboxes for FTA Transfer, C, and Non-C. Enables one at a time.-->
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioFTA" value="FTA">
+        <label class="form-check-label" for="inlineRadioFTA">FTA Transfer Requested&emsp;</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioC" value="C">
+        <label class="form-check-label" for="inlineRadioC">C&emsp;&emsp;</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioNon-C" value="Non-C">
+        <label class="form-check-label" for="inlineRadioNon-C">Non-C</label>
+      </div>
+      <br><br><br>
       <div id="project-phases"></div>
     </div>  
     <div class="col-7">
@@ -563,7 +578,7 @@ transit facilities that offer a significant alternative to regional highway trav
           <p>**Only checked phase(s) will be consider for funding (Year of Expenditure (YOE)
             Cost). If a phase has been or will be completed with local funds or resources,
             please do not check. Please enter cost information for each Phase checked</p>
-          <div id="yoe-form"></div>
+          <div id="type-project"></div>
       </div>
   </div>
 
@@ -689,14 +704,11 @@ transit facilities that offer a significant alternative to regional highway trav
       <button type="button" class="btn btn-dark">Print Form</button>
     </div>
   </div>
-
 </div>
 
 
 
 
-
-  
 
   <!-- partial -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
