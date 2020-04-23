@@ -85,6 +85,29 @@ function checkForChangesInForm(changes){
     console.log(logOfChanges);
 }
 
+/**
+ * This function will open a new tab and show the log of changes in ascending time order.
+ */
+function seeLog(){
+    var logWindow = window.open('http://127.0.0.1:5500/interactive_Form/log.html', '_blank');
+    // Create an unordered list
+    var changes = logWindow.document.createElement('ul');
+
+    // Create a list item for each change
+    // and append it to the list
+    logOfChanges.forEach(function (change) {
+        var li = document.createElement('li');
+        li.textContent = "JSON.stringify(change)";
+        changes.appendChild(li);
+    });
+    logWindow.document.body.appendChild(changes);
+}
+
+/**
+ * Method that initialized the dx data grid
+ * @param {*} element 
+ */
+
 function configureProjectReadinessElementsTable(element){
     rows = [
         {
