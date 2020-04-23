@@ -388,27 +388,47 @@ function projectPhasesForm(){
     }).dxForm("instance").validate();
 }
 
+// Project Funding Grid that I have been assigned to give function
 function projectFunding(){
     row = [
+        //  Left funding categories as String the rest of the columns as floats
+        {   
+        "fundingCategories":"*Fund Category 1", // Can be changed within page
+        "fedShare":200.0,                       // Starts first and second row with values to show sum function
+        "stateShare":100.0,                     
+        "locShare":1200.0,
+        "locCont":1110.0,
+        "totalShare":0.0
+        },
         {
-        "fundingCategories":"Total Funding By Share",
-        "fedShare":"0.0",
-        "stateShare":"0.0",
-        "locShare":"0.0",
-        "locCont":"0.0",
-        "totalShare":"0.0"
+        "fundingCategories":"*Fund Category 2", 
+        "fedShare":400.0,
+        "stateShare":1200.0,
+        "locShare":200.0,
+        "locCont":1000.0,
+        "totalShare":0.0
+        },
+        {
+        "fundingCategories":"*Fund Category 3",
+        "fedShare":0.0,
+        "stateShare":0.0,
+        "locShare":0.0,
+        "locCont":0.0,
+        "totalShare":0.0
         }
     ]
     $("#project-funding").dxDataGrid({
-        dataSource:row,
+        dataSource: row,                            
+      
         editing: {
-            mode: "row",
-            allowUpdating: false,
+            mode: "cell",                       // Cell mode editing allows for realtime-editing without saving 
+            allowUpdating: true,                
             allowDeleting: true,
-            allowAdding: false
-        },
-        columnAutoWidth:false,
-        showBorders:true,
+            allowAdding: true,
+            },       
+        
+        columnAutoWidth:true,                   
+        
         wordWrapEnabled:true,
         columns:[
             {
@@ -436,14 +456,54 @@ function projectFunding(){
                 caption:"Total Share"
             }
         ],
+        summary: {                              // Summary for all the columns 
+            recalculatingWhileEditing: true, 
+            totalItems: [{
+                column: "fedShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",          // Instead of "Cost: $__ it's just the price with $"
+                valueFormat: "currency"         // Formats sum to match real life use
+            },{
+                column: "stateShare",
+                summaryType: "sum",
+                displayFormat: "{0} ", 
+                valueFormat: "currency",              
+
+            },{
+                column: "locShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+
+            },{
+                column: "locCont",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+
+            },{
+                column: "totalShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+            },{
+            totalItems: [{                      // What was going to be my attempt for row summation
+                // column:"fedShare",
+                // alignByColumn,
+                // summaryType: "sum",
+                // displayFormat: "{0} ",
+                // valueFormat: "currency",
+                // showInColumb: "totalShare",
+            }]                                  // In the end, mostly all functionality was achieved except for summation row-wise
+        }]
+    }
     });
     $("#add-funding").dxButton({  
         text: "Add a Row",  
         onClick: function () {  
             $('#project-funding').dxDataGrid("instance").insertRow();  
         }  
-    })  
-
+    })
 }
 
 function contactInformation(){
@@ -550,4 +610,5 @@ function projectReadinessElementsFooter(){
             },
         ]
     }).dxForm("instance").validate();
+    
 }
