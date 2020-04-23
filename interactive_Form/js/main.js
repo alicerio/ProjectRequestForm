@@ -388,30 +388,14 @@ function projectPhasesForm(){
     }).dxForm("instance").validate();
 }
 
-// Project Funding Grid that I have been assigned to give function
+// Project Funding Grid with addition functionalty for column
 function projectFunding(){
     row = [
         //  Left funding categories as String the rest of the columns as floats
         {   
-        "fundingCategories":"*Fund Category 1", // Can be changed within page
-        "fedShare":200.0,                       // Starts first and second row with values to show sum function
-        "stateShare":100.0,                     
-        "locShare":1200.0,
-        "locCont":1110.0,
-        "totalShare":0.0
-        },
-        {
-        "fundingCategories":"*Fund Category 2", 
-        "fedShare":400.0,
-        "stateShare":1200.0,
-        "locShare":200.0,
-        "locCont":1000.0,
-        "totalShare":0.0
-        },
-        {
-        "fundingCategories":"*Fund Category 3",
-        "fedShare":0.0,
-        "stateShare":0.0,
+        "fundingCategories":"", // Can be changed within page
+        "fedShare":0.0,                       // Starts first and second row with values to show sum function
+        "stateShare":0.0,                     
         "locShare":0.0,
         "locCont":0.0,
         "totalShare":0.0
@@ -424,7 +408,7 @@ function projectFunding(){
             mode: "cell",                       // Cell mode editing allows for realtime-editing without saving 
             allowUpdating: true,                
             allowDeleting: true,
-            allowAdding: true,
+            allowAdding: false,
             },       
         
         columnAutoWidth:true,                   
