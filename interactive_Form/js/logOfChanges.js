@@ -75,7 +75,7 @@ function checkForChangesInForm(changes){
             continue;
         }
         else {
-            currChanges.push("Change in: " + key);
+            currChanges.push(key);
         }
     }
     if(currChanges.length >= 1){
@@ -96,7 +96,10 @@ function seeLog(){
         // Create a list item for each change
         // and append it to the list
         logOfChanges.forEach(function (change) {
-            holder.innerHTML += "<p>"+change+"</p><br>";
+            for(var c in change){
+                holder.innerHTML += "<p>"+$("label[for='" + change[c] + "']").text()+"</p>";
+            }
+            
         });
     }
 
