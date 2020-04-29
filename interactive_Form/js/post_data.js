@@ -1,96 +1,71 @@
-/**
- * We will extract the data from the multiple sources such as data grids and forms.
- */
+
+function getValues(){
+    getAllValues("#project-phases-radios");
+    getAllValues("#project-cost-footer");
+    getAllValues("#pre-project-funding");
+    getAllValues("#page1");
+    getAllValues("#page2");
+}
 
 
-var project_readiness_elements = JSON.stringify($("#project-readiness-elements").dxDataGrid("instance").getDataSource().items());
-var transit_only = JSON.stringify($("#transit-only").dxDataGrid("instance").getDataSource().items());
-var project_readiness_elements_footer = JSON.stringify($("#project-readiness-elements-footer").dxForm("instance").getDataSource().items());
-
-
-/**
- * Here we extract the project phases checkboxes and put them into an object
- * 
- */
-var project_phases_radios = [
-    {
-        value:""
-    }
-]
-var  inputValues = []
-    $("#project-phases-radios :input").map(function() {
+function getAllValues(divId) {
+    var  inputValues = []
+    $(divId + " :input").map(function() {
         var type = $(this).prop("type");
-
         // checked radios/checkboxes
         if ((type == "checkbox" || type == "radio")) { 
             inputValues[$(this).attr("id")] = $(this).is(':checked');
+        }
+        else if (type == "select-one") { // recurses the options of select one
+           var sel = document.getElementById($(this).attr("id")); 
+           var opt;
+            for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+                opt = sel.options[i];
+                if ( opt.selected === true ) {
+                    break;
+                }
+            }
+           inputValues[$(this).attr("id")] = opt.text;
         }
         // all other fields, except buttons
         else if (type != "button" && type != "submit") {
             inputValues[$(this).attr("id")] = $(this).val();
         }
+      
     })
-project_phases_radios = inputValues;
+    console.log(inputValues);
+}
 
-/**
- * Here we get from the project phases and type of projects which are form and a datagrid
- */
-var project_phases = JSON.stringify($("#project-phases").dxForm("instance").getDataSource().items());
-var type_project = JSON.stringify($("#type-project").dxDataGrid("instance").getDataSource().items());
+function getAllDx(){
+    var cmaq = JSON.stringify($("#CMAQ_Analysis_Form").dxDataGrid("instance").getDataSource().items());
+    var taf = JSON.stringify($("#transit_Analysis_Form").dxDataGrid("instance").getDataSource().items());
+    var taf_r = JSON.stringify($("#transit_Analysis_Form").dxDataGrid("instance").getDataSource().items());
+        
+    /**
+     * We will extract the data from the multiple sources such as data grids and forms.
+     */
+    var project_readiness_elements = JSON.stringify($("#project-readiness-elements").dxDataGrid("instance").getDataSource().items());
+    var transit_only = JSON.stringify($("#transit-only").dxDataGrid("instance").getDataSource().items());
+    var project_readiness_elements_footer = JSON.stringify($("#project-readiness-elements-footer").dxForm("instance").getDataSource().items());
 
-/**
- * Here we get the inputs from the project cost footer
- */
-var project_cost_footer=[
-    {
-        is_sponsor_paying_PE:"",
-        is_sponsor_paying_row:"",
-        is_decision_commited:"",
-        percentages:""
 
-    }
-]
-var  inputValues = []
-    $("#project-cost-footer :input").map(function() {
-        var type = $(this).prop("type");
+    /**
+     * Here we get from the project phases and type of projects which are form and a datagrid
+     */
+    var project_phases = JSON.stringify($("#project-phases").dxForm("instance").getDataSource().items());
+    var type_project = JSON.stringify($("#type-project").dxDataGrid("instance").getDataSource().items());
 
-        // checked radios/checkboxes
-        if ((type == "checkbox" || type == "radio")) { 
-            inputValues[$(this).attr("id")] = $(this).is(':checked');
-        }
-        // all other fields, except buttons
-        else if (type != "button" && type != "submit") {
-            inputValues[$(this).attr("id")] = $(this).val();
-        }
-    })
-project_cost_footer = inputValues;
-
-/**
- * Here we get the info of the values pre project funding
- */
-var pre_project_funding=[
-    {
-        requesting_mpo_funds:"",
-        YOE_cost:""
-    }
-]
-var  inputValues = []
-    $("#pre-project-funding :input").map(function() {
-        var type = $(this).prop("type");
-
-        // checked radios/checkboxes
-        if ((type == "checkbox" || type == "radio")) { 
-            inputValues[$(this).attr("id")] = $(this).is(':checked');
-        }
-        // all other fields, except buttons
-        else if (type != "button" && type != "submit") {
-            inputValues[$(this).attr("id")] = $(this).val();
-        }
-    })
-    pre_project_funding = inputValues;
 
     /**
      * We get project funding values and contact information values
      */
-var type_project = JSON.stringify($("#project-funding").dxDataGrid("instance").getDataSource().items());
-var contact_info = JSON.stringify($("#contact-information").dxDataGrid("instance").getDataSource().items());
+    var type_project = JSON.stringify($("#project-funding").dxDataGrid("instance").getDataSource().items());
+    var contact_info = JSON.stringify($("#contact-information").dxDataGrid("instance").getDataSource().items());
+
+
+    
+
+    console.log(cmaq);
+    console.log(taf);
+    console.log(taf_r);
+}
