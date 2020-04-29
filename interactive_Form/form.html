@@ -588,27 +588,27 @@ transit facilities that offer a significant alternative to regional highway trav
 
   <!--Page for of the form Part of total project cost information-->
   <div class="row justify-content-start">
-    <div class="col">
+    <div class="col" id = "project-cost-footer">
       <form>
         <div class="form">
-            <label for ="yes/no">Is the sponsor paying for 100% of PE?</label>
-            <select class = "yes/no select" id = "yes/no">
+            <label for ="is_sponsor_paying_PE">Is the sponsor paying for 100% of PE?</label>
+            <select class = "yes/no select" id = "is_sponsor_paying_PE">
                 <option></option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
             <br>
-            <label for = "yes/no">Is this sponsor paying for 100% of the Row
+            <label for = "is_sponsor_paying_row">Is this sponsor paying for 100% of the Row
                 and utility relocation?</label>
-            <select class= "yes/no select" id = "yes/no">
+            <select class= "yes/no select" id = "is_sponsor_paying_row">
                 <option></option>
                 <option>Yes</option>
                 <option>No</option>
             </select>
             <br>
-            <label for = "yes/no">Is this decision making/governing body committed to the local/state 
+            <label for = "is_decision_commited">Is this decision making/governing body committed to the local/state 
                 share(match)?</label>
-            <select class = "yes/no select" id = "yes/no">
+            <select class = "yes/no select" id = "is_decision_commited">
                 <option></option>
                 <option>Yes</option>
                 <option>No</option>                   
@@ -632,20 +632,20 @@ transit facilities that offer a significant alternative to regional highway trav
   </div>
   <br>
   <div class="row justify-content-start">
-    <div class="col">
+    <div class="col" id = "pre-project-funding">
 
       <h6>Project Funding</h6>
       <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1"> 
+          <input class="form-check-input" type="checkbox" value="" id="requesting-mpo-funds">
+          <label class="form-check-label" for="requesting-mpo-funds">
             Requesting MPO Funds (For long range planning, beyond TIP years, funding category may not be identified, 
             MPO will make final recommendation)
           </label>
       </div>
       
-      <label for="YOE Cost">YOE Cost</label>
+      <label for="YOE-Cost">YOE Cost</label>
       <input type = "text"
-            id = "YOE Cost"
+            id = "YOE-Cost"
             value = "" />
     </div>
   </div>
