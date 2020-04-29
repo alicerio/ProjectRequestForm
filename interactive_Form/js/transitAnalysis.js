@@ -1,4 +1,4 @@
-$(function() {
+$(function configure_transit_Analysis_Form() {
     $("#transit_Analysis_Form").dxForm({
         formData: CMAQAnalysis,
         labelLocation: "left",
@@ -49,7 +49,7 @@ $(function() {
     ]
     });
 });
-$(function() {
+$(function configure_transit_Analysis_Form_Radio() {
     $("#transit_Analysis_Form_Radio").dxForm({
         formData: CMAQAnalysis,
         labelLocation: "right",

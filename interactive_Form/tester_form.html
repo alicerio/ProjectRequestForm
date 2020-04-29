@@ -5,37 +5,96 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script  src="js/testerLogic.js"></script>
+  <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css'>
+  <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.material.blue.light.css'><link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+  <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link src="css/style.css" rel="stylesheet">
+  <script src="./js/testerLogic.js"></script>
+
 </head>
 <body>
 
-<div class="container">
-  <h2>Tester form</h2>
-  <a class="btn btn-primary" href="/MPO_Projects/requestForm_Brian/management-views/employee-view" onclick="testA()" role="button">Exit and Save</a>
-  <form action="/action_page.php">
-    <div class="form-group">
-      <label>Info 1</label>
-      <input class="form-control" id="info1" placeholder="Info 1 Example">
+  <div class="form-check-label col-md-6" id = "formTest">
+        
+    <div class = "row form-check">
+       <label class ="col-md-5" for = "fedFiscYear"><b>Federal Fiscal Year(FY)</b></label>
+       <input class ="col-md-6"type="number" id="fedFiscYear" name="quantity" min="2010" max="2200" row = "1">
     </div>
-    <div class="form-group">
-      <label>Info 2</label>
-      <input class="form-control" id="info2" placeholder="Info 2 example" >
-    </div>
-    <div class="form-group">
-        <label>Info 3</label>
-        <input class="form-control" id="info3" placeholder="Info 3 Example">
-      </div>
-    <div class="form-group">
-        <label>Info 4</label>
-        <input class="form-control" id="info4" placeholder="Info 4 example" >
+    
+    <div class="input-group row form-check">
+      <label class ="col-md-5"for="net_year">Network Year</label>
+      <select  class="custom-select form-group col-md-6" id="net_year">
+        <option selected>...</option>
+        <option value="1">2020</option>
+        <option value="2">2030</option>
+        <option value="3">2040</option>
+        <option value="4">2045</option>
+        <option value="5">2045</option>
+      </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+    <div class = "form-check m-3">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="on_state_sys" value="false">
+        <label class="custom-control-label" for="on_state_sys">ON-State system road</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="off_state_sys" value="false">
+        <label class="custom-control-label" for="off_state_sys">OFF-State system road</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="capacity_project" value="false">
+        <label class="custom-control-label" for="capacity_project">Capacity Project (Additional through lanes)</label>
+      </div>
+    </div>
+
+    <div class = "row form-check">
+      <label class ="col-md-5" for = "numExistingLanes">Number of Existing Lanes</label>
+      <input class ="col-md-6"type="number" row = "1" id ="numExistingLanes">
+    </div>
+    <div class = "row form-check">
+      <label class ="col-md-5" for ="numProjectedLanes">Number of Projected Lanes</label>
+      <input class ="col-md-6"type="number" row = "1" id = "numProjectedLanes">
+    </div>
+    <div class = "row form-check">
+      <label class ="col-md-5" for = "miles">Number of miles</label>
+      <input class ="col-md-6"type="number" row = "1" id = "miles">
+    </div>
+  </div>
+
+  <div id = "projectReadinessElements">
+    <h6>Project Readiness Elements:</h6>
+    <p>"Overall" Estimate of Preliminary Engineering (PE)
+      Examples include: Project Initiation/Planning, Initial Design,
+      Environmental Document, PS&E, etc.</p>
+    <div id="project-readiness-elements"></div>
+  </div>
+
+  <button onclick="getAllValues('#formTest')">Save</button>
+  <button onclick="seeLog()">See Log of Changes</button>
+
+
+
+
+   
+
+  <!-- partial -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdn3.devexpress.com/jslib/19.2.6/js/dx.all.js'></script>
+  <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+  <script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!--Custom JS-->
+
 
 </body>
 </html>

@@ -1,4 +1,8 @@
-$(function() {
+(function($){  
+ configure_CMAQ_Analysis_Form();
+})(jQuery);
+
+function configure_CMAQ_Analysis_Form (){
     $("#CMAQ_Analysis_Form").dxForm({
         formData: CMAQAnalysis,
         items: [ {
@@ -45,7 +49,8 @@ $(function() {
             }]
         }]
     });
-});
+  }
+
 
     var CMAQAnalysis = {
         "ID": 1,
