@@ -221,117 +221,126 @@ function transitOnly(element){
 }
 
 function totalProjectCostForm(){
-    costs=[
+    /*
+     * Table divided into two columns (Funding Category and Amount).
+     * Adds up the Total Cost of the project and the subtotal of 
+     * the construction part only.
+     * The subtotal sum corresponds to items from ID's [1,5]
+    */
+    costs = [
         {
-            "Construction Subtotal":"",
-
-            "Non-Construction Project":"",
-
-            "Construction":"",
-
-            "Construction Engineering (CE)":"",
-
-            "Contingencies":"",
-
-            "Potential Change Order":"",
-
-            "Preliminary Engineering":"",
-
-            "Indirects":"",
-
-            "Right Off Way":"",
-
-            "FTA Transfer":""
+            "fundingCategory":"Non-Construction Project",
+            "amount":0,
+            "ID": 1                       // Idetifier that determines if the sumation should go to the subtoal.
+        },
+        {
+            "fundingCategory":"Construction",
+            "amount":0,
+            "ID": 2
+        },
+        {
+            "fundingCategory":"Construction Engineering (CE)",
+            "amount":0,
+            "ID": 3
+        },
+        {
+            "fundingCategory":"Contingencies",
+            "amount":0,
+            "ID": 4
+        },
+        {  
+            "fundingCategory":"Potential Change Order",
+            "amount":0,
+            "ID": 5
+        },
+        {
+            "fundingCategory":"Preliminary Engineering",
+            "amount":0,
+            "ID": 6
+        },
+        {
+            "fundingCategory":"Indirects",
+            "amount":0,
+            "ID": 7
+        },
+        {
+            "fundingCategory":"Right-Of-Way",
+            "amount":0,
+            "ID": 8
+        },
+        {
+            "fundingCategory":"FTA Transfer",
+            "amount":0,
+            "ID": 9
         }
-        
     ]
-    $("#yoe-form").dxForm({
-        formData: costs,
-        readOnly: false,
-        labelLocation: "left",
-        colCount:1,
-        items:[
+    $("#type-project").dxDataGrid({
+        dataSource:costs,
+        keyExpr: "ID",                                      // Assigns identifier to each row.
+        showBorders: true,
+        editing: {                                          
+            mode: "batch",
+            allowUpdating: true,                       
+        },
+        columnAutoWidth:true,
+        showBorders:true,
+        columns:[
             {
-                dataField:"Construction Subtotal",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
+                dataField:"fundingCategory",
+                allowEditing:false                   
             },
             {
-                dataField:"Non-Construction Project",
-                editorType: "dxTextArea",
+                dataField:"amount",
+                format: "currency",
                 editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Construction",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Construction Engineering (CE)",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Contingencies",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Potential Change Order",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Preliminary Engineering",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Indirects",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"Right Off Way",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
-                }
-            },
-            {
-                dataField:"FTA Transfer",
-                editorType: "dxTextArea",
-                editorOptions: {
-                    height: 40
+                    format: "currency"                      // Converts each input to currency format "$0.00".
                 }
             }
-        ]
-    }).dxForm("instance").validate();
-    
+        ],
+        selectedRowKeys: [1,2,3,4,5],                       // Rows that add to the subtotal field.
+        summary: {
+            recalculateWhileEditing: true,    
+            totalItems: [{
+                name: "SelectedRowsSummary",
+                showInColumn: "amount",
+                displayFormat: "Construction Subtotal: {0}",
+                valueFormat: "currency",
+                summaryType: "custom"
+            },
+            {
+                column: "amount",
+                summaryType: "sum",
+                showInColumn: "amount",
+                valueFormat: "currency",
+                displayFormat: "Total Project Cost {0}"
+            }
+        ],
+        calculateCustomSummary: function (options) {
+            /*
+             * Function that makes possible the adition of only certain rows.
+             * Adds the subtotal category.
+            */
+            if (options.name === "SelectedRowsSummary") {
+                if (options.summaryProcess === "start") {
+                    options.totalValue = 0;
+                }
+                if (options.summaryProcess === "calculate") {
+                    if (options.component.isRowSelected(options.value.ID)) {
+                        options.totalValue = options.totalValue + options.value.amount;
+                    }
+                }
+            }
+        }
+        }
+    });
 }
 
 function projectPhasesForm(){
+    /*
+     * Eliminated the first three elements in order to make them availabe as radio checkboxes.
+    */
     phases=[
         {
-            "FTA Transfer Requested":"",
-            "C":"",
-            "Non C":"",
             "PE":"",
             "E:Env":"",
             "E:Eng":"",
@@ -342,33 +351,17 @@ function projectPhasesForm(){
     ]
 
     $("#project-phases").dxForm({
+        /*
+         * Changed the order of the checkboxes to make them appear the
+         * way they are on the electronic form.
+        */
         formData: phases,
         readOnly: false,
         labelLocation: "left",
         colCount: 2,
         items:[
             {
-                dataField:"FTA Transfer Requested",
-                editorType: "dxCheckBox",
-            },
-            {
-                dataField:"C",
-                editorType: "dxCheckBox",
-            },
-            {
-                dataField:"Non C",
-                editorType: "dxCheckBox",
-            },
-            {
                 dataField:"PE",
-                editorType: "dxCheckBox",
-            },
-            {
-                dataField:"E:Env",
-                editorType: "dxCheckBox",
-            },
-            {
-                dataField:"E:Eng",
                 editorType: "dxCheckBox",
             },
             {
@@ -376,7 +369,15 @@ function projectPhasesForm(){
                 editorType: "dxCheckBox",
             },
             {
+                dataField:"E:Env",
+                editorType: "dxCheckBox",
+            },
+            {
                 dataField:"R:Acq",
+                editorType: "dxCheckBox",
+            },
+            {
+                dataField:"E:Eng",
                 editorType: "dxCheckBox",
             },
             {
@@ -387,27 +388,31 @@ function projectPhasesForm(){
     }).dxForm("instance").validate();
 }
 
+// Project Funding Grid with addition functionalty for column
 function projectFunding(){
     row = [
-        {
-        "fundingCategories":"Total Funding By Share",
-        "fedShare":"0.0",
-        "stateShare":"0.0",
-        "locShare":"0.0",
-        "locCont":"0.0",
-        "totalShare":"0.0"
+        //  Left funding categories as String the rest of the columns as floats
+        {   
+        "fundingCategories":"", // Can be changed within page
+        "fedShare":0.0,                       // Starts first and second row with values to show sum function
+        "stateShare":0.0,                     
+        "locShare":0.0,
+        "locCont":0.0,
+        "totalShare":0.0
         }
     ]
     $("#project-funding").dxDataGrid({
-        dataSource:row,
+        dataSource: row,                            
+      
         editing: {
-            mode: "row",
-            allowUpdating: false,
+            mode: "cell",                       // Cell mode editing allows for realtime-editing without saving 
+            allowUpdating: true,                
             allowDeleting: true,
-            allowAdding: false
-        },
-        columnAutoWidth:false,
-        showBorders:true,
+            allowAdding: false,
+            },       
+        
+        columnAutoWidth:true,                   
+        
         wordWrapEnabled:true,
         columns:[
             {
@@ -435,14 +440,54 @@ function projectFunding(){
                 caption:"Total Share"
             }
         ],
+        summary: {                              // Summary for all the columns 
+            recalculatingWhileEditing: true, 
+            totalItems: [{
+                column: "fedShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",          // Instead of "Cost: $__ it's just the price with $"
+                valueFormat: "currency"         // Formats sum to match real life use
+            },{
+                column: "stateShare",
+                summaryType: "sum",
+                displayFormat: "{0} ", 
+                valueFormat: "currency",              
+
+            },{
+                column: "locShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+
+            },{
+                column: "locCont",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+
+            },{
+                column: "totalShare",
+                summaryType: "sum",
+                displayFormat: "{0} ",
+                valueFormat: "currency",
+            },{
+            totalItems: [{                      // What was going to be my attempt for row summation
+                // column:"fedShare",
+                // alignByColumn,
+                // summaryType: "sum",
+                // displayFormat: "{0} ",
+                // valueFormat: "currency",
+                // showInColumb: "totalShare",
+            }]                                  // In the end, mostly all functionality was achieved except for summation row-wise
+        }]
+    }
     });
     $("#add-funding").dxButton({  
         text: "Add a Row",  
         onClick: function () {  
             $('#project-funding').dxDataGrid("instance").insertRow();  
         }  
-    })  
-
+    })
 }
 
 function contactInformation(){
@@ -549,4 +594,5 @@ function projectReadinessElementsFooter(){
             },
         ]
     }).dxForm("instance").validate();
+    
 }
