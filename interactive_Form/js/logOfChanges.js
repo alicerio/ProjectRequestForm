@@ -10,6 +10,7 @@ function generateLogOfChanges(){
     //We will generate here the information to search on database, form id or 
     var input = []
 
+    //FIXME: Add proper calls to php
     //We should modify the proper php to obtain the data from the form (both old and newest in one array)
     $.ajax({
         url: '',
