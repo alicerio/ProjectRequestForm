@@ -220,6 +220,10 @@ function configTableProjects(){
     {
         "Status": "MPO Approved",
         "ID":6
+    },
+    {
+        "Status": "Post-Approval Revision",
+        "ID":8
     }];
     /*Table of projects  */
     $("#gridContainerProjects").dxDataGrid({
@@ -247,6 +251,14 @@ function configTableProjects(){
             {   
                 caption:"Last Name",
                 dataField:"last_name",
+            },
+            {   
+                caption:"MPO ID",
+                dataField:"mpo_id",
+            },
+            {   
+                caption:"CSJ or CN",
+                dataField:"csj_cn",
             },
             {
                 caption:"Status",
