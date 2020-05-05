@@ -1,6 +1,6 @@
 $(function configure_transit_Analysis_Form() {
     $("#transit_Analysis_Form").dxForm({
-        formData: CMAQAnalysis,
+        formData: taf_values,//CMAQAnalysis,
         labelLocation: "left",
         items: [ 
             {
@@ -51,7 +51,7 @@ $(function configure_transit_Analysis_Form() {
 });
 $(function configure_transit_Analysis_Form_Radio() {
     $("#transit_Analysis_Form_Radio").dxForm({
-        formData: CMAQAnalysis,
+        formData: taf_r_values,//CMAQAnalysis,
         labelLocation: "right",
         items: [ 
             {

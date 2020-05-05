@@ -4,7 +4,7 @@
 
 function configure_CMAQ_Analysis_Form (){
     $("#CMAQ_Analysis_Form").dxForm({
-        formData: CMAQAnalysis,
+        formData: cmaq_values,//CMAQAnalysis,
         items: [ {
             itemType: "group",
             cssClass: "second-group",

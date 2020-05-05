@@ -1,4 +1,14 @@
 /**
+ * FIXME: Consider Using a Dictionary to which to push the changes, push changes that the current user does in the current session
+ * Once the person is done with the editing we send the object as a string to the database and Store it there in a row
+ * If the person wishes to see the log of changes, we get the table containing the objects from the database and we
+ * print those changes.
+ * 
+ */
+
+
+
+/**
  * Function that generates the log of changes by comparing newest data with the previous data (we will have two tables in the database
  * to represent the last two main changes).
  * 

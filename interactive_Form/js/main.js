@@ -69,7 +69,7 @@ function configureProjectReadinessElementsTable(element){
         "Other"
     ]
     $("#"+element).dxDataGrid({
-        dataSource:rows,
+        dataSource:project_readiness_elements_values,//rows,
         editing: {
             mode: "row",
             allowUpdating: true,
@@ -170,7 +170,7 @@ function transitOnly(element){
         "Other"
     ]
     $("#"+element).dxDataGrid({
-        dataSource:rows,
+        dataSource:transit_only_values,//rows,
         editing: {
             mode: "row",
             allowUpdating: true,
@@ -275,7 +275,7 @@ function totalProjectCostForm(){
         }
     ]
     $("#type-project").dxDataGrid({
-        dataSource:costs,
+        dataSource:type_project_values,//costs,
         keyExpr: "ID",                                      // Assigns identifier to each row.
         showBorders: true,
         editing: {                                          
@@ -355,7 +355,7 @@ function projectPhasesForm(){
          * Changed the order of the checkboxes to make them appear the
          * way they are on the electronic form.
         */
-        formData: phases,
+        formData: project_phases_values,//phases,
         readOnly: false,
         labelLocation: "left",
         colCount: 2,
@@ -402,7 +402,7 @@ function projectFunding(){
         }
     ]
     $("#project-funding").dxDataGrid({
-        dataSource: row,                            
+        dataSource:project_funding_values,// row,                            
       
         editing: {
             mode: "cell",                       // Cell mode editing allows for realtime-editing without saving 
@@ -503,7 +503,7 @@ function contactInformation(){
         }
     ]
     $("#contact-information").dxDataGrid({
-        dataSource:rows,
+        dataSource:contact_info_values,//rows,
         editing: {
             mode: "row",
             allowUpdating: true,
@@ -557,7 +557,7 @@ function projectReadinessElementsFooter(){
         }
     ]
     $("#project-readiness-elements-footer").dxForm({
-        formData: footerElems,
+        formData: project_readiness_elements_footer_values,//footerElems,
         readOnly: false,
         labelLocation: "left",
         colCount: 4,
