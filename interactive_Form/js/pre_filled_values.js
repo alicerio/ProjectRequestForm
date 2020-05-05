@@ -64,22 +64,26 @@ page_2_values = {"page2_CMP_select1": "No",
 "page2_congestedR_checkbox":true,
 "page2_congestedR_Collapsed": "Congestion Goal",
 "page2_cp_select1": "No",
-"page2_ctc_radio": true,
 "page2_infCond_checkbox": false,
 "page2_infCond_collapsed": "",
 "page2_rs_select1": "Yes",
 "page2_rtfs_select1": "Yes",
-"page2_rtr_radio": false,
 "page2_safety_checkbox":true,
 "page2_safety_collapsed": "Safety goial",
-"page2_wc_radio": false,
-"page2_wtr_radio": false,
+
 }
+cmaq_footer = {"page2_rtr_radio": false,
+    "page2_ctc_radio": true,
+    "page2_wc_radio": false,
+    "page2_wtr_radio": false,
+}
+
 
 //Function that loads values with the other method
 function loadAllValues(){
     loadValues("#page1",page_1_values);
     loadValues("#page2",page_2_values);
+    loadValues("#cmaq-footer",cmaq_footer);
     loadValues("#project_phases_radios",project_phases_radios_values)
     loadValues("#project-cost-footer",project_cost_footer_values);
     loadValues("#pre-project-funding",pre_project_funding_values);
