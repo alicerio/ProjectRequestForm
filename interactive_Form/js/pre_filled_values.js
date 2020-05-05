@@ -11,14 +11,79 @@ taf_r_values = {"ID":1,"VOC":"0","CO":"1900","NOX":"2","PM10":"2020","Prepared_B
 project_cost_footer_values = {"is_sponsor_paying_PE": "Yes", "is_sponsor_paying_row": "Yes", "is_decision_commited": "No", "percentages": "≥1% <10%"}
 pre_project_funding_values = {"requesting-mpo-funds": true, "YOE-Cost": "12000"}
 project_phases_radios_values = {"inlineRadioFTA": false, "inlineRadioC": true, "inlineRadioNon-C": false, "undefined": "false"}
+page_1_values = {"page1_County_group": "Doña Ana",
+"page1_DOTD_group": "TX Dist.24",
+"page1_FFC_group": "Freeway/Expressway",
+"page1_IC_group": "Anthony NM",
+"page1_No_Radio": false,
+"page1_Ptype_group": "New Road",
+"page1_SponE_textarea": "Sponsor ",
+"page1_Yes_Radio": true,
+"page1_agencyComm_textarea": "No comments",
+"page1_capacityP_input": false,
+"page1_csj_input": "1234",
+"page1_exLines_input": "2",
+"page1_fhwa_input": true,
+"page1_fta_input": true,
+"page1_fy_input": "2012",
+"page1_id_input": "123",
+"page1_limitFrom_input": "2020",
+"page1_limitTo_input": "2021",
+"page1_needpur_textarea": "This is need and purpose",
+"page1_netyear_input": "2020",
+"page1_newP_Radio": true,
+"page1_numLines_input": "1",
+"page1_offstate_input": false,
+"page1_onstate_input": true,
+"page1_pdesc_input": "This is a Test",
+"page1_pname_input": "Test",
+"page1_projectedLanes_input": "5",
+"page1_relationdesc_textarea": "Description of relationship",
+"page1_revision_Radio": false,
+"page1_roadwayName_input": "Road R."}
 
+page_2_values = {"page2_CMP_select1": "No",
+"page2_ES_checkbox": false,
+"page2_ES_collapsed": "",
+"page2_FMEV_checkbox": false,
+"page2_FMEV_collapsed": "",
+"page2_NCMPS_checkbox": false,
+"page2_NCMPS_collapsed": "",
+"page2_NHS_select1": "Yes",
+"page2_PubTS_checkbox": false,
+"page2_PubTS_collapsed": "",
+"page2_RCS_checkbox": false,
+"page2_RCS_collapsed": "",
+"page2_SystemR_checkbox": false,
+"page2_SystemR_collapsed": "",
+"page2_TDMS_checkbox": true,
+"page2_TDMS_collapsed": "Travel Demands Goal",
+"page2_TOS_checkbox": false,
+"page2_TOS_collapsed": "",
+"page2_TPB_select1": "Yes",
+"page2_congestedR_checkbox":true,
+"page2_congestedR_Collapsed": "Congestion Goal",
+"page2_cp_select1": "No",
+"page2_ctc_radio": true,
+"page2_infCond_checkbox": false,
+"page2_infCond_collapsed": "",
+"page2_rs_select1": "Yes",
+"page2_rtfs_select1": "Yes",
+"page2_rtr_radio": false,
+"page2_safety_checkbox":true,
+"page2_safety_collapsed": "Safety goial",
+"page2_wc_radio": false,
+"page2_wtr_radio": false,
+}
 
 //Function that loads values with the other method
 function loadAllValues(){
+    loadValues("#page1",page_1_values);
+    loadValues("#page2",page_2_values);
+    loadValues("#project_phases_radios",project_phases_radios_values)
     loadValues("#project-cost-footer",project_cost_footer_values);
     loadValues("#pre-project-funding",pre_project_funding_values);
-    loadValues("#project_phases_radios",project_phases_radios_values)
-}
+}   
 
 /**
  * Function that receives an id and data and populates that div with the data given
@@ -26,10 +91,16 @@ function loadAllValues(){
  * @param {*} data 
  */
 function loadValues(divId,data) {
-    if ((type == "checkbox" || type == "radio")) { 
-        $(this).prop("checked", data[$(this).attr("id")]);;
-    }
     $(divId + " :input").map(function() {
+        var type = $(this).prop("type");
+        if ((type == "checkbox" || type == "radio")) { 
+            if($(this).data("target") != "" && data[$(this).attr("id")]){
+                $($(this).data("target")).collapse()
+            }
+            $(this).prop("checked", data[$(this).attr("id")]);
+        }
+
         $(this).val(data[$(this).attr("id")]);
+
     })
 }
