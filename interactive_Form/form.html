@@ -20,503 +20,512 @@
   <!-- page 1 -->
 <div class = "container" id="page1">
 
-  <div class = "row">
-    <div class="form-group col-md-4">
-        <img src="../img/logos.png" class="img-fluid" alt="Responsive image">
-    </div>
-
-    <div class="form-group col-md-6">
-      <h3 class="text-center">ePRF <br>Electornic Project Request Form</h3>
-    </div>
-  </div>
-  
-  <div class = "row float-right">
-    <p>
-      <i>
-          <strong>
-            <p>Date:&nbsp; </p>
-              <p id="datetime" style="text-decoration: underline;"></p>
-              <script>
-                  var dt = new Date();
-                  document.getElementById("datetime").innerHTML =  (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
-              </script>
-          </strong>
-     </i>
-      </p>
-  </div>
-  
-  
-  <div class = "row">
-    <div class=" form-group col-md-12 form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="project_Status" id="page1_newP_Radio" value="option1">
-      <label class="form-check-label" for="page1_newP_Radio">New Project</label>
-    </div>
-    <div class="form-group col-md-12 form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="project_Status" id="page1_revision_Radio" value="option2">
-      <label class="form-check-label" for="page1_revision_Radio">Revision to an approved project</label>
-    </div>
-
-  <div class= "row form-group">
-    <label class="form-check-label col-md-7">Is the decision making/governing body of your agency committed to this project?</label>
-    <div class="form-check col-md-2">
-        <label class=""><input type="radio" name="decision" id="page1_Yes_Radio">Yes</label>
-        <label class=""><input type="radio" name="decision" id="page1_No_Radio"> No</label>
-    </div>
-  </div>
-  
-  <div class = "row">
-    <div class = "col-md-6">
-      <label>MPO ID</label>
-      <input class="col-md-8" id="page1_id_input">
-    </div>
-    <div class = "col-md-6">
-      <label>CSJ or CN</label>
-      <input  class="col-md-8" id="page1_csj_input">
-    </div>
-
-  <div>
-    <div class = "row form-group">
-      <label class="col-md-2">Project Name</label>
-      <input class="col-md-10" id="page1_pname_input">
-    </div>
-    <div class = "row form-group">
-      <label class="col-md-2">Project Description</label>
-      <input class="col-md-10" id="page1_pdesc_input">
-    </div>
-    <div class = "row form-group">
-      <label class="col-md-2">Limit From</label>
-      <input class="col-md-10" id="page1_limitFrom_input">
-    </div>
-    <div class = "row form-group">
-      <label class="col-md-2">Limit To</label>
-      <input class="col-md-10" id="page1_limitTo_input">
-    </div>
-  </div>
-
-  <div>
-    <h5>Definition of Regionally Significant Roadway: 23 CFR § 450.104</h5>
-    <p>
-      Regionally significant project means a transportation project (other than projects that may be grouped in the TIP and/or STIP or <a href="https://www.law.cornell.edu/cfr/text/40/93.126"  target="_blank">exempt</a> projects as defined in EPA's
-transportation conformity regulation (40 CFR part 93)) that is on a facility which serves regional transportation needs (such as access to and from the area outside the region;
-major activity centers in the region; major planned developments such as new retail malls, sports complexes, or employment centers; or transportation terminals) and would
-normally be included in the modeling of the metropolitan area's transportation network. At a minimum, this includes all principal arterial highways and all fixed guideway
-transit facilities that offer a significant alternative to regional highway travel.
-    </p>
-
-    <label>Describe the relationship of this project to the definition of Regionally Significant Roadway or exempt projects:</label>
-    <textarea class="form-control"  id="page1_relationdesc_textarea"></textarea>
-
-    <label>Need and Purpose:</label>
-    <textarea class="form-control"  id="page1_needpur_textarea"></textarea>
-
-
-    <label> Agency Comments:</label>
-    <textarea class="form-control"  id="page1_agencyComm_textarea"></textarea>
-  </div>
-  <hr>
-  <div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="page1_fhwa_input">
-      <label class="form-check-label" for="page1_fhwa_input">
-        Requesting Highway/Roadway funds for this project/program (FHWA,State and/or Local Funds)
-      </label>
-    </div>
-    <div class="form-check form-group">
-      <input class="form-check-input" type="checkbox" value="" id="page1_fta_input">
-      <label class="form-check-label" for="page1_fta_input">
-        Requesting Transit funds for his project/program (FTA, State and/or Local Funds)
-      </label>
-    </div>
-  </div>
-
-  <div class = "row">
-    <div class="form-check-label col-md-6">
-        
-      <div class = "row form-check">
-         <label class ="col-md-5"><b>Federal Fiscal Year(FY)</b></label>
-         <input class ="col-md-6"type="number" id="page1_fy_input"  min="2010" max="2200" row = "1">
+    <div class = "row">
+      <div class="form-group col-md-4">
+          <img src="../img/logos.png" class="img-fluid" alt="Responsive image">
       </div>
-      
-      <div class="input-group row form-check">
-        <label class ="col-md-5"for="page1_netyear_input">Network Year</label>
-        <select  class="custom-select form-group col-md-6" id="page1_netyear_input">
+
+      <div class="form-group col-md-6">
+        <h3 class="text-center">ePRF <br>Electornic Project Request Form</h3>
+      </div>
+    </div>
+    
+    <div class = "row float-right">
+      <p>
+        <i>
+            <strong>
+              <p>Date:&nbsp; </p>
+                <p id="datetime" style="text-decoration: underline;"></p>
+                <script>
+                    var dt = new Date();
+                    document.getElementById("datetime").innerHTML =  (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+                </script>
+            </strong>
+      </i>
+        </p>
+    </div>
+    
+    
+    <div class = "row">
+      <div class=" form-group col-md-12 form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="project_Status" id="page1_newP_Radio" value="option1">
+        <label class="form-check-label" for="page1_newP_Radio">New Project</label>
+      </div>
+      <div class="form-group col-md-12 form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="project_Status" id="page1_revision_Radio" value="option2">
+        <label class="form-check-label" for="page1_revision_Radio">Revision to an approved project</label>
+      </div>
+
+    <div class= "row form-group">
+      <label class="form-check-label col-md-7">Is the decision making/governing body of your agency committed to this project?</label>
+      <div class="form-check col-md-2">
+          <label class=""><input type="radio" name="decision" id="page1_Yes_Radio">Yes</label>
+          <label class=""><input type="radio" name="decision" id="page1_No_Radio"> No</label>
+      </div>
+    </div>
+    
+    <div class = "row">
+      <div class = "col-md-6">
+        <label>MPO ID</label>
+        <input class="col-md-8" id="page1_id_input">
+      </div>
+      <div class = "col-md-6">
+        <label>CSJ or CN</label>
+        <input  class="col-md-8" id="page1_csj_input">
+      </div>
+
+    <div>
+      <div class = "row form-group">
+        <label class="col-md-2">Project Name</label>
+        <input class="col-md-10" id="page1_pname_input">
+      </div>
+      <div class = "row form-group">
+        <label class="col-md-2">Project Description</label>
+        <input class="col-md-10" id="page1_pdesc_input">
+      </div>
+      <div class = "row form-group">
+        <label class="col-md-2">Limit From</label>
+        <input class="col-md-10" id="page1_limitFrom_input">
+      </div>
+      <div class = "row form-group">
+        <label class="col-md-2">Limit To</label>
+        <input class="col-md-10" id="page1_limitTo_input">
+      </div>
+    </div>
+
+    <div>
+      <h5>Definition of Regionally Significant Roadway: 23 CFR § 450.104</h5>
+      <p>
+        Regionally significant project means a transportation project (other than projects that may be grouped in the TIP and/or STIP or <a href="https://www.law.cornell.edu/cfr/text/40/93.126"  target="_blank">exempt</a> projects as defined in EPA's
+  transportation conformity regulation (40 CFR part 93)) that is on a facility which serves regional transportation needs (such as access to and from the area outside the region;
+  major activity centers in the region; major planned developments such as new retail malls, sports complexes, or employment centers; or transportation terminals) and would
+  normally be included in the modeling of the metropolitan area's transportation network. At a minimum, this includes all principal arterial highways and all fixed guideway
+  transit facilities that offer a significant alternative to regional highway travel.
+      </p>
+
+      <label>Describe the relationship of this project to the definition of Regionally Significant Roadway or exempt projects:</label>
+      <textarea class="form-control"  id="page1_relationdesc_textarea"></textarea>
+
+      <label>Need and Purpose:</label>
+      <textarea class="form-control"  id="page1_needpur_textarea"></textarea>
+
+
+      <label> Agency Comments:</label>
+      <textarea class="form-control"  id="page1_agencyComm_textarea"></textarea>
+    </div>
+    <hr>
+    <div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="page1_fhwa_input">
+        <label class="form-check-label" for="page1_fhwa_input">
+          Requesting Highway/Roadway funds for this project/program (FHWA,State and/or Local Funds)
+        </label>
+      </div>
+      <div class="form-check form-group">
+        <input class="form-check-input" type="checkbox" value="" id="page1_fta_input">
+        <label class="form-check-label" for="page1_fta_input">
+          Requesting Transit funds for his project/program (FTA, State and/or Local Funds)
+        </label>
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class="form-check-label col-md-6">
+          
+        <div class = "row form-check">
+          <label class ="col-md-5"><b>Federal Fiscal Year(FY)</b></label>
+          <input class ="col-md-6"type="number" id="page1_fy_input"  min="2010" max="2200" row = "1">
+        </div>
+        
+        <div class="input-group row form-check">
+          <label class ="col-md-5"for="page1_netyear_input">Network Year</label>
+          <select  class="custom-select form-group col-md-6" id="page1_netyear_input">
+            <option selected>...</option>
+            <option value="1">2020</option>
+            <option value="2">2030</option>
+            <option value="3">2040</option>
+            <option value="4">2045</option>
+            <option value="5">2045</option>
+          </select>
+        </div>
+
+        <div class = "form-check m-3">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="page1_onstate_input">
+            <label class="custom-control-label" for="page1_onstate_input">ON-State system road</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="page1_offstate_input">
+            <label class="custom-control-label" for="page1_offstate_input">OFF-State system road</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="page1_capacityP_input">
+            <label class="custom-control-label" for="page1_capacityP_input">Capacity Project (Additional through lanes)</label>
+          </div>
+        </div>
+
+        <div class = "row form-check">
+          <label class ="col-md-5">Number of Existing Lanes</label>
+          <input class ="col-md-6"type="number" row = "1" id="page1_exLines_input">
+        </div>
+        <div class = "row form-check">
+          <label class ="col-md-5">Number of Projected Lanes</label>
+          <input class ="col-md-6"type="number" row = "1" id="page1_projectedLanes_input">
+        </div>
+        <div class = "row form-check">
+        <label class ="col-md-5">Number of miles</label>
+        <input class ="col-md-6"type="number" row = "1" id="page1_numLines_input">
+        </div>
+      </div>
+
+      <div class="form-check-label col-md-6">
+
+        <div class ="row form-group">
+          <label class="col-md-5">Highway/Roadway Name</label>
+          <textarea class="form-control col-md-7"  rows ="1" id="page1_roadwayName_input"></textarea>
+        </div>
+
+    
+
+        <div class="input-group mb-3 row">
+          <label  class="form-group col-md-4" for="page1_Ptype_group">Type of project  </label>
+
+          <select class="custom-select form-group col-md-8" id="page1_Ptype_group">
+            <option selected>...</option>
+            <option value="1">Additional Lanes</option>
+            <option value="2">Aesthetics</option>
+            <option value="3">Bikeway</option>
+            <option value="4">Bus Purchase</option>
+            <option value="5">Bus Service</option>
+            <option value="6">Enhancements</option>
+            <option value="7">inter-modal</option>
+            <option value="8">ITS</option>
+            <option value="9">Multi-modal</option>
+            <option value="10">New Road</option>
+            <option value="11">pedestrian</option>
+            <option value="12">Plan</option>
+            <option value="13">Port of Entry</option>
+            <option value="14">Program</option>
+            <option value="15">Rail</option>
+            <option value="16">Rehabilitation</option>
+            <option value="17">Signals</option>
+            <option value="18">Study</option>
+            <option value="19">Transit</option>
+            <option value="20">Transit Terminal</option>
+            <option value="21">Other, Specify</option>
+          </select>
+        </div>
+    
+        
+      <div class="input-group mb-3 row">
+        <label  class="form-group col-md-9"for="page1_FFC_group">Federal Functional Classification <a href="https://www.txdot.gov/apps/statewide_mapping/StatewidePlanningMap.html"  target="_blank">Texas</a>  <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23410"  target="_blank">New Mexico</a></label>
+        <select class="custom-select form-group col-md-3" id="page1_FFC_group">
           <option selected>...</option>
-          <option value="1">2020</option>
-          <option value="2">2030</option>
-          <option value="3">2040</option>
-          <option value="4">2045</option>
-          <option value="5">2045</option>
+          <option value="1">Interstate</option>
+          <option value="2">Freeway/Expressway</option>
+          <option value="3">Principal Arterial</option>
+          <option value="4">Minor Arterial</option>
+          <option value="5">Major Collector</option>
+          <option value="6">Minor Collector</option>
+          <option value="7">Local</option>
+          <option value="8">Other, specift</option>
+          <option value="9">Not Federally Functional Classified</option>
         </select>
       </div>
 
-      <div class = "form-check m-3">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="page1_onstate_input">
-          <label class="custom-control-label" for="page1_onstate_input">ON-State system road</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="page1_offstate_input">
-          <label class="custom-control-label" for="page1_offstate_input">OFF-State system road</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="page1_capacityP_input">
-          <label class="custom-control-label" for="page1_capacityP_input">Capacity Project (Additional through lanes)</label>
-        </div>
-      </div>
-
-      <div class = "row form-check">
-        <label class ="col-md-5">Number of Existing Lanes</label>
-        <input class ="col-md-6"type="number" row = "1" id="page1_exLines_input">
-      </div>
-      <div class = "row form-check">
-        <label class ="col-md-5">Number of Projected Lanes</label>
-        <input class ="col-md-6"type="number" row = "1" id="page1_projectedLanes_input">
-      </div>
-      <div class = "row form-check">
-      <label class ="col-md-5">Number of miles</label>
-      <input class ="col-md-6"type="number" row = "1" id="page1_numLines_input">
-      </div>
-    </div>
-
-    <div class="form-check-label col-md-6">
-
-      <div class ="row form-group">
-        <label class="col-md-5">Highway/Roadway Name</label>
-        <textarea class="form-control col-md-7"  rows ="1" id="page1_roadwayName_input"></textarea>
-      </div>
-
-  
 
       <div class="input-group mb-3 row">
-        <label  class="form-group col-md-4" for="page1_Ptype_group">Type of project  </label>
-
-        <select class="custom-select form-group col-md-8" id="page1_Ptype_group">
+        <label class="form-group col-md-4"  for="page1_DOTD_group">DOT District</label>
+        <select  class="custom-select form-group col-md-8" id="page1_DOTD_group">
           <option selected>...</option>
-          <option value="1">Additional Lanes</option>
-          <option value="2">Aesthetics</option>
-          <option value="3">Bikeway</option>
-          <option value="4">Bus Purchase</option>
-          <option value="5">Bus Service</option>
-          <option value="6">Enhancements</option>
-          <option value="7">inter-modal</option>
-          <option value="8">ITS</option>
-          <option value="9">Multi-modal</option>
-          <option value="10">New Road</option>
-          <option value="11">pedestrian</option>
-          <option value="12">Plan</option>
-          <option value="13">Port of Entry</option>
-          <option value="14">Program</option>
-          <option value="15">Rail</option>
-          <option value="16">Rehabilitation</option>
-          <option value="17">Signals</option>
-          <option value="18">Study</option>
-          <option value="19">Transit</option>
-          <option value="20">Transit Terminal</option>
-          <option value="21">Other, Specify</option>
+          <option value="1">TX Dist.24</option>
+          <option value="2">NM Dist. 1</option>
+          <option value="3">NM Dist.2</option>
         </select>
       </div>
-  
+
+      <div class="input-group mb-3 row">
+        <label class="form-group col-md-4" for="page1_County_group">County</label>
+        <select class="custom-select form-group col-md-8" id="page1_County_group">
+          <option selected>...</option>
+          <option value="1">El Paso</option>
+          <option value="2">Doña Ana</option>
+          <option value="3">Otero</option>
+        </select>
+      </div>
+    
+      <div class="input-group mb-3 row">
+        <label class="form-group col-md-4" for="page1_IC_group">Incorporated City</label>
+        <select class="custom-select form-groupcol-md-8" id="page1_IC_group">
+          <option selected>...</option>
+          <option value="1">Anthony TX</option>
+          <option value="2">Anthony NM</option>
+          <option value="3">Clint</option>
+          <option value="1">El Paso</option>
+          <option value="2">Horizon City</option>
+          <option value="3">Socorro</option>
+          <option value="1">San Elizario</option>
+          <option value="2">Sunland Park NM</option>
+          <option value="3">Vinton, TX</option>
+          <option value="3">N/A</option>
+          <option value="3">Other</option>
+        </select>
+      </div>
       
-    <div class="input-group mb-3 row">
-      <label  class="form-group col-md-9"for="page1_FFC_group">Federal Functional Classification <a href="https://www.txdot.gov/apps/statewide_mapping/StatewidePlanningMap.html"  target="_blank">Texas</a>  <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23410"  target="_blank">New Mexico</a></label>
-      <select class="custom-select form-group col-md-3" id="page1_FFC_group">
-        <option selected>...</option>
-        <option value="1">Interstate</option>
-        <option value="2">Freeway/Expressway</option>
-        <option value="3">Principal Arterial</option>
-        <option value="4">Minor Arterial</option>
-        <option value="5">Major Collector</option>
-        <option value="6">Minor Collector</option>
-        <option value="7">Local</option>
-        <option value="8">Other, specift</option>
-        <option value="9">Not Federally Functional Classified</option>
-      </select>
+      <div class = "row mb-3">
+        <label class="col-md-4">Sponsor Entity</label>
+        <textarea class="col-md-8"  rows="1"  id="page1_SponE_textarea" ></textarea>
+      </div>
+      
     </div>
 
-
-    <div class="input-group mb-3 row">
-      <label class="form-group col-md-4"  for="page1_DOTD_group">DOT District</label>
-      <select  class="custom-select form-group col-md-8" id="page1_DOTD_group">
-        <option selected>...</option>
-        <option value="1">TX Dist.24</option>
-        <option value="2">NM Dist. 1</option>
-        <option value="3">NM Dist.2</option>
-      </select>
-    </div>
-
-    <div class="input-group mb-3 row">
-      <label class="form-group col-md-4" for="page1_County_group">County</label>
-      <select class="custom-select form-group col-md-8" id="page1_County_group">
-        <option selected>...</option>
-        <option value="1">El Paso</option>
-        <option value="2">Doña Ana</option>
-        <option value="3">Otero</option>
-      </select>
-    </div>
-  
-    <div class="input-group mb-3 row">
-      <label class="form-group col-md-4" for="page1_IC_group">Incorporated City</label>
-      <select class="custom-select form-groupcol-md-8" id="page1_IC_group">
-        <option selected>...</option>
-        <option value="1">Anthony TX</option>
-        <option value="2">Anthony NM</option>
-        <option value="3">Clint</option>
-        <option value="1">El Paso</option>
-        <option value="2">Horizon City</option>
-        <option value="3">Socorro</option>
-        <option value="1">San Elizario</option>
-        <option value="2">Sunland Park NM</option>
-        <option value="3">Vinton, TX</option>
-        <option value="3">N/A</option>
-        <option value="3">Other</option>
-      </select>
-    </div>
-    
-    <div class = "row mb-3">
-      <label class="col-md-4">Sponsor Entity</label>
-      <textarea class="col-md-8"  rows="1"  id="page1_SponE_textarea" ></textarea>
-    </div>
-    
   </div>
 
+    <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23410"  target="_blank">Click here for Project Selection Process diagram and presentation (PDF)</a>
+    </a>
 </div>
-
-  <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23410"  target="_blank">Click here for Project Selection Process diagram and presentation (PDF)</a>
-  </a>
+</div>
+</div>
 </div>
 <hr>
 
-<!-- Page 2 Interactie PRF Form -->
+<!-------------- Page 2 Interactie PRF Form --------->
 <div class="container" id="page2">
-  <h2>Project Selection Process </h2>
+    <h2>Project Selection Process </h2>
 
-  <div class = "row">
-    <select class="form-group col-md-2"id="page2_rs_select1" class="form-control">
-      <option selected>...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-    <label class="form-group col-md-10" for="page2_rs_select1">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
-          If yes, please provide link or attachment with supporting data
-    </label>
-
-
-
-  </div>
+    <div class = "row">
+      <select class="form-group col-md-2"id="page2_rs_select1" class="form-control">
+        <option selected>...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+      <label class="form-group col-md-10" for="page2_rs_select1">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
+            If yes, please provide link or attachment with supporting data
+      </label>
 
 
-  <div class = "row">
-    <select class="form-group col-md-2"id="page2_cp_select1" class="form-control">
-      <option selected>...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-    <label class="form-group col-md-10" for="page2_cp_select1">Is this project from an updated comprehensive plan, thoroughfare plan, feasibility or corridor study?
-          If yes, please provide link or attachment:
-          Excerpt from corridor plan attached (too large to attach whole document)
-    </label>
-  </div>
 
+    </div>
+
+
+    <div class = "row">
+      <select class="form-group col-md-2"id="page2_cp_select1" class="form-control">
+        <option selected>...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+      <label class="form-group col-md-10" for="page2_cp_select1">Is this project from an updated comprehensive plan, thoroughfare plan, feasibility or corridor study?
+            If yes, please provide link or attachment:
+            Excerpt from corridor plan attached (too large to attach whole document)
+      </label>
+    </div>
+
+    <div class="row">
+      <select class="form-group col-md-2"id="page2_NHS_select1" class="form-control">
+        <option selected>...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+        <label class="form-group col-md-10" for="page2_NHS_select1">Is this project on the National Highway System NHS?</label>
+    </div>
+
+    <div class = "row">
+      <select class="form-group col-md-2"id="page2_rtfs_select1" class="form-control">
+        <option selected>...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+        <label class="form-group col-md-10" for="page2_rtfs_select1">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
+            If yes, please provide link or attachment with supporting data</label>
+    </div>
+
+    <div class="row">
+      <select class="form-group col-md-2"id="page2_TPB_select1" class="form-control">
+        <option selected>...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+        <label class="form-group col-md-10" for="page2_TPB_select1">Is this project part of TPB resolution for the Active Transportation System?</label>
+    </div>
+
+    <div class = "row">
+      <select class="form-group col-md-2"id="page2_CMP_select1" class="form-control">
+        <option selected>...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+      <label class="form-group col-md-10" for="page2_CMP_select1">Is this project part of TPB resolution for a Comprehensive Mobility Plan (CMP)?</label>
+    </div>
+  <!-- -->
   <div class="row">
-    <select class="form-group col-md-2"id="page2_NHS_select1" class="form-control">
-      <option selected>...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-      <label class="form-group col-md-10" for="page2_NHS_select1">Is this project on the National Highway System NHS?</label>
+  <div class="form-group col-md-6">
+    <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23375"  target="_blank">
+      <h4>National Goals</h4>
+    </a>
+
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_safety' id="page2_safety_checkbox">Safety</input>
+      <div id='page2_safety' class='collapse div1'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_safety_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_infCond' id="page2_infCond_checkbox">Infrastructure Condition</input>
+      <div id='page2_infCond' class='collapse div2'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_infCond_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_congestedR' id="page2_congestedR_checkbox"> Congestion Reduction</input>
+      <div id='page2_congestedR' class='collapse div3'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_congestedR_Collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_SystemR' id="page2_SystemR_checkbox">System Reliability</input>
+      <div id='page2_SystemR' class='collapse div4'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_SystemR_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_FMEV' id="page2_FMEV_checkbox">Freight Movement and Economic Vitality</input>
+      <div id='page2_FMEV' class='collapse div1'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_FMEV_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_ES' id="page2_ES_checkbox">Environmental Sustainability</input>
+      <div id='page2_ES' class='collapse div1'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_ES_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 
-  <div class = "row">
-    <select class="form-group col-md-2"id="page2_rtfs_select1" class="form-control">
-      <option selected>...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-      <label class="form-group col-md-10" for="page2_rtfs_select1">Will this project achieve a significant reduction in traffic fatalities or serious injuries?
-          If yes, please provide link or attachment with supporting data</label>
-  </div>
+  <div class="form-group col-md-6">
+    <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23375"  target="_blank">
+      <h4>Congestion Management Process Strategies</h4>
+    </a>
+    
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_TDMS' id="page2_TDMS_checkbox">Travel Demand Management Strategies</input>
+      <div id='page2_TDMS' class='collapse div1'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_TDMS_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
 
-  <div class="row">
-    <select class="form-group col-md-2"id="page2_TPB_select1" class="form-control">
-      <option selected>...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-      <label class="form-group col-md-10" for="page2_TPB_select1">Is this project part of TPB resolution for the Active Transportation System?</label>
-  </div>
-
-  <div class = "row">
-    <select class="form-group col-md-2"id="page2_CMP_select1" class="form-control">
-      <option selected>...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-    <label class="form-group col-md-10" for="page2_CMP_select1">Is this project part of TPB resolution for a Comprehensive Mobility Plan (CMP)?</label>
-  </div>
-<!-- -->
-<div class="row">
-<div class="form-group col-md-6">
-  <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23375"  target="_blank">
-    <h4>National Goals</h4>
-  </a>
-
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_safety'>Safety</input>
-    <div id='page2_safety' class='collapse div1'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_safety_collapsed" rows="2"></textarea>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_TOS' id="page2_TOS_checkbox">Traffic Operations Strategies</input>
+      <div id='page2_TOS' class='collapse div2'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_TOS_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_PubTS' id="page2_PubTS_checkbox">Public Transportation Strategies</input>
+      <div id='page2_PubTS' class='collapse div3'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_PubTS_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_RCS' id="page2_RCS_checkbox">Road Capacity Strategies</input>
+      <div id='page2_RCS' class='collapse div4'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_RCS_collapsed" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type='checkbox' data-toggle='collapse' data-target='#page2_NCMPS' id="page2_NCMPS_checkbox">Non-CMP Strategies</input>
+      <div id='page2_NCMPS' class='collapse div1'>
+        <div>
+          <label class="form-group col-md-12" >How does this project meet this goal?</label>
+          <textarea class="form-control" id="page2_NCMPS_collapsed" rows="2"></textarea>
+        </div>
       </div>
     </div>
   </div>
-
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_infCond'>Infrastructure Condition</input>
-    <div id='page2_infCond' class='collapse div2'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_infCond_collapsed" rows="2"></textarea>
-      </div>
-    </div>
   </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_congestedR'>Congestion Reduction</input>
-    <div id='page2_congestedR' class='collapse div3'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_congestedR_Collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_SystemR'>System Reliability</input>
-    <div id='page2_SystemR' class='collapse div4'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_SystemR_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_FMEV'>Freight Movement and Economic Vitality</input>
-    <div id='page2_FMEV' class='collapse div1'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_FMEV_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_ES'>Environmental Sustainability</input>
-    <div id='page2_ES' class='collapse div1'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_ES_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-
-
 
 </div>
 
-<div class="form-group col-md-6">
-  <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23375"  target="_blank">
-    <h4>Congestion Management Process Strategies</h4>
-  </a>
+  <div class="container">
+    <div class="row form-group">
+      <div id = "CMAQ_Analysis" class = "col-md-4">
+        <h4 class = "text-center">CMAQ Analysis</h4>
+        <p class = "text-center">*Air Quality Analysis MUST accompany request for CMAQ Funds.</p>
+        <div class= "dx-viewport demo-container">
+          <div id="CMAQ_Analysis_Form"></div>
+        </div> 
+      </div>
+      <div  class = "col-md-2">
+    
+      </div>
+      <div id = "transit_Analysis" class = "col-md-4">
+        <h4 class = "text-center">**Transit Only</h4>
+        <p></p>
+          <div class= "dx-viewport demo-container">
+            <div id="transit_Analysis_Form"></div>
+            <h6>Project Type:</h6>
+            <div class = "col-md-3" id="transit_Analysis_Form_Radio"></div>
+          </div>
+      </div>
+  </div>
+
+
+
+  </div>
+
+
+  <div class="container">
+    <div class="form-group col-md-12 container" id= "cmaq-footer">
+      <div class = "row">
+        <label>Projects will be examined at the corridor level to determine multimodal needs. Which best describes this projects.</label>
+        <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23409"  target="_blank">
+          <label>Block System</label>
+        </a>
+        <br>
+      </div>
   
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_TDMS'>Travel Demand Management Strategies</input>
-    <div id='page2_TDMS' class='collapse div1'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_TDMS_collapsed" rows="2"></textarea>
-      </div>
-    </div>
+      <label class="radio-inline"><input type="radio" name="optradio" id="page2_wc_radio">Within community  </label>
+      <label class="radio-inline"><input type="radio" name="optradio" id="page2_ctc_radio">Community to community  </label>
+      <label class="radio-inline"><input type="radio" name="optradio" id="page2_wtr_radio">Community to region  </label>
+      <label class="radio-inline"><input type="radio" name="optradio" id="page2_rtr_radio">Region to region  </label>
+  </div>
+    
+
   </div>
 
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_TOS'>Traffic Operations Strategies</input>
-    <div id='page2_TOS' class='collapse div2'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_TOS_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_PubTS'>Public Transportation Strategies</input>
-    <div id='page2_PubTS' class='collapse div3'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_PubTS_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_RCS'>Road Capacity Strategies</input>
-    <div id='page2_RCS' class='collapse div4'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_RCS_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-  <div>
-    <input type='checkbox' data-toggle='collapse' data-target='#page2_NCMPS'>Non-CMP Strategies</input>
-    <div id='page2_NCMPS' class='collapse div1'>
-      <div>
-        <label class="form-group col-md-12" >How does this project meet this goal?</label>
-        <textarea class="form-control" id="page2_NCMPS_collapsed" rows="2"></textarea>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="row form-group">
-<div id = "CMAQ_Analysis" class = "col-md-4">
-  <h4 class = "text-center">CMAQ Analysis</h4>
-  <p class = "text-center">*Air Quality Analysis MUST accompany request for CMAQ Funds.</p>
-  <div class= "dx-viewport demo-container">
-    <div id="CMAQ_Analysis_Form"></div>
-  </div> 
-</div>
-<div  class = "col-md-2">
-
-</div>
-<div id = "transit_Analysis" class = "col-md-4">
-  <h4 class = "text-center">**Transit Only</h4>
-  <p></p>
-    <div class= "dx-viewport demo-container">
-      <div id="transit_Analysis_Form"></div>
-      <h6>Project Type:</h6>
-      <div class = "col-md-3" id="transit_Analysis_Form_Radio"></div>
-    </div>
-
-
-</div>
-
-
-</div>
-
-
-
-<div class="form-group col-md-12">
-<div class = "row">
-  <label>Projects will be examined at the corridor level to determine multimodal needs. Which best describes this projects.</label>
-  <a href="http://www.elpasompo.org/civicax/filebank/blobdload.aspx?BlobID=23409"  target="_blank">
-    <label>Block System</label>
-  </a>
-  <br>
-</div>
-
-<label class="radio-inline"><input type="radio" name="optradio" id="page2_wc_radio">Within community  </label>
-<label class="radio-inline"><input type="radio" name="optradio" id="page2_ctc_radio">Community to community  </label>
-<label class="radio-inline"><input type="radio" name="optradio" id="page2_wtr_radio">Community to region  </label>
-<label class="radio-inline"><input type="radio" name="optradio" id="page2_rtr_radio">Region to region  </label>
-
-</div>
-</div>
 <hr>
 
 <!-------------------------------------------------PAGE 3 OF THE FORM----------------------------------------------------->
@@ -703,6 +712,7 @@ transit facilities that offer a significant alternative to regional highway trav
       <p>Save your form before signing, all fields will be locked after signature is provided.</p>
       <button type="button" class="btn btn-dark" onclick="getValues()">Save Form As</button></pre>
       <button type="button" class="btn btn-dark">Print Form</button>
+      <!-- <button type="button" class="btn btn-dark" onclick="loadAllValues()">Load Form</button> -->
     </div>
   </div>
 </div>
@@ -721,11 +731,13 @@ transit facilities that offer a significant alternative to regional highway trav
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <!--JavaScript custom-->
+  <!-- <script src="./js/pre_filled_values.js"></script> -->
   <script src="./js/CMAQ_Analysis.js"></script>
   <script src="./js/transitAnalysis.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/testerLogic.js"></script>
   <script src="./js/post_data.js"></script>
+
 
 </body>
 </html>
