@@ -31,8 +31,8 @@ class ProjectController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'parent_id' => ['nullable', 'integer'],
-            'mpo_id' => ['required'],
-            'csj_cn' => ['required'],
+            'mpo_id' => ['nullable'],
+            'csj_cn' => ['nullable'],
             'name' => ['required'],
             'description' => ['required'],
             'limit_from' => ['required'],
@@ -99,7 +99,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        dd(3);
         $name = $project->name;
         $project->delete();
         return response('Project: '. $name .' was deleted', 200)->header('Content-Type', 'text/plain');

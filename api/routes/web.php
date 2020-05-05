@@ -15,4 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::apiResource('projects', 'API\ProjectController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('users', 'UserController');
+
+Route::resource('projects', 'ProjectController');
+// Route::apiResource('api/projects', 'API\ProjectController');
+
+Route::resource('agencies', 'AgencyController');
