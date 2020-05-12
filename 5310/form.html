@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>530</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css'>
+    <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.material.blue.light.css'><link rel="stylesheet" href="css/style.css">
+    
+    <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+  <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link src="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class = "container" id = "page1">
+        <div class = "row">
+            <div class = "form-group col-md-4">
+                <img src="../img/logos.png" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class = "form-group col-md-6">
+                <h3 class="text-center">5310 ePRF <br>Electornic Project Request Form</h3>
+            </div>
+        </div>
+        <div class = "row float-right">
+            <p>
+                <i>
+                    <strong>
+                        <p>Date:&nbsp; </p>
+                        <p id="datetime" style="text-decoration: underline;"></p>
+                        <script>
+                            var dt = new Date();
+                            document.getElementById("datetime").innerHTML =  (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+                        </script>
+                    </strong>
+                </i>
+            </p>
+        </div>
+        <div class="row">
+            <div class = "form-group col-md-12 form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="project_Status" id="page1_newP_Radio" value="option1">
+                <label class="form-check-label" for="page1_newP_Radio">New Project</label>
+            </div>
+            <div class="form-group col-md-12 form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="project_Status" id="page1_revision_Radio" value="option2">
+                <label class="form-check-label" for="page1_revision_Radio">Revision to an approved project</label>
+            </div>
+        </div>
+        <div class = "row form-group">
+            <label class="form-check-label col-md-7">Is the decision making/governing body of your agency committed to this project?</label>
+            <div class="form-check col-md-2">
+                <label class=""><input type="radio" name="decision" id="page1_Yes_Radio">Yes</label>
+                <label class=""><input type="radio" name="decision" id="page1_No_Radio"> No</label>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-6">
+                <label>MPO ID</label>
+                <input class="col-md-8" id="page1_id_input">
+            </div>
+            <div class = "col-md-6">
+                <label>CSJ or CN</label>
+                <input class="col-md-8" id="page1_csj_input">
+            </div>
+        </div>
+        <div>
+            <div class = "row form-group">
+                <label class = "col-md-2">Project Name</label>
+                <input class="col-md-10" id="page1_pname_input">
+            </div>
+            <div class = "row form-group">
+                <label class="col-md-2">Project Description</label>
+                <input class="col-md-10" id="page1_pdesc_input">  
+            </div>
+            <div class="row form-group">
+                <label class="col-md-2">Limit From</label>
+                <input class="col-md-10" id="page1_limitFrom_input">    
+            </div>
+            <div class = "row form-group">
+                <label class="col-md-2">Limit To</label>
+                <input class="col-md-10" id="page1_limitTo_input">
+            </div>
+        </div>
+        <div>
+            <label>Need and Purpose:</label>
+            <textarea class="form-control" id="page1_needpur_textarea"></textarea>
+
+            <label>Agency Comments:</label>
+            <textarea class="form-control"  id="page1_agencyComm_textarea"></textarea>
+        </div>
+        <hr>
+        <div>
+            <div class = "form-check form-group">
+                <input class="form-check-input" type="checkbox" value="" id="page1_fta_input">
+                <label class="form-check-label" for="page1_fta_input">
+                    Requesting Transit funds for his project/program (FTA, State and/or Local Funds)
+                </label>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "form-check-label col-md-6">
+                <div class="row form-check">
+                    <label class ="col-md-5"><b>Federal Fiscal Year(FY)</b></label>
+                    <input class ="col-md-6"type="number" id="page1_fy_input"  min="2010" max="2200" row = "1">
+                </div>
+                <div class = "input-group row form-check">
+                    <label class ="col-md-5"for="page1_netyear_input">Network Year</label>
+                    <select  class="custom-select form-group col-md-6" id="page1_netyear_input">
+                        <option selected>...</option>
+                        <option value="1">2020</option>
+                        <option value="2">2030</option>
+                        <option value="3">2040</option>
+                        <option value="4">2045</option>
+                        <option value="5">N/A</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <h2>Project Selection Process</h2>
+        <div class="row">
+            <select class="form-group col-md-2"id="page1_rtp_select1" class="form-control">
+                <option selected>...</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <label class="form-group col-md-10" for="page1_rtp_select1">Will this project achieve goals as identified in the Regional Transportation Plan?
+                If yes, please provide attachment with supporting information:
+            </label>
+        </div>
+        <div class="row">
+            <select class="form-group col-md-2"id="page1_cp_select1" class="form-control">
+                <option selected>...</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <label class="form-group col-md-10" for="page1_cp_select1">Is this project from an updated comprehensive plan, thoroughfare plan, feasibility or corridor study?
+                If yes, please provide link or attachment:
+                How does this project address congestion, mobility, accessibility, and reliability of NHS?
+          </label>
+        </div>
+        <div class="row">
+            <select class="form-group col-md-2"id="page1_TPB_select1" class="form-control">
+                <option selected>...</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <label class="form-group col-md-10" for="page1_TPB_select1">Is this project part of TPB resolution for a Comprehensive Mobility Plan (CMP)?
+            </label>
+        </div>
+        <div class="row">
+            <select class="form-group col-md-2"id="page1_l/s_select1" class="form-control">
+                <option selected>...</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <label class="form-group col-md-10" for="page1_l/s_select1">Is this decision making/governing body committed to the local/state share (match)?
+                Attach documentation. E.g. Resolution, Financial Plan, etc.
+            </label>
+        </div>
+        <div class="row">
+            <select class="form-group col-md-2"id="page1_invest_select1" class="form-control">
+                <option selected>...</option>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <label class="form-group col-md-10" for="page1_invest_select1">Sponsor's investment to construction cost. (Excluding required local/state share)
+            </label>
+        </div>
+    </div>
+    <!------END OF PAGE 1------>
+    <!--DIV CLASS CONTAINER PAGE 2 GOES HERE-->
+</body>
