@@ -3,7 +3,7 @@
 <head>
     <title>5310</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css'>
     <link rel='stylesheet' href='https://cdn3.devexpress.com/jslib/19.2.6/css/dx.material.blue.light.css'><link rel="stylesheet" href="css/style.css">
@@ -412,7 +412,7 @@
             </div>
         </div>
     </div>
-    <!------END OF PAGE 2------>
+    <!------START OF PAGE 3------>
     <div class="container" id="page3">
         <h5>Project Funding</h5>
         <div class="form-check">
@@ -421,197 +421,18 @@
                 Requesting MPO Funds
             </label>
         </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">YOE Cost</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-            </div>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Capital (New Bus Purchase)</th>
-                    <th scope="col">Federal Share Usually 85%</th>
-                    <th scope="col">Local Share Usually 15%</th>
-                    <th scope="col">Local Contribution Beyond Local Share</th>
-                    <th scope="col">Total Share</th>
-                    <th scope="col">TDC Amount Requested</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>               
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>  
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>  
-                </tr>
-                <tr>
-                    <td>Total Funding By Share</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>  
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-light">Add Funding</button>
-        <button type="button" class="btn btn-light">Remove Funding</button>
+        <div id="project-funding-bus"></div>
+        <div id="add-funding-bus"></div>
         <br><br>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">YOE Cost</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-            </div>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Capital (Refurnishing of Vehicles & Soft.)</th>
-                    <th scope="col">Federal Share Usually 80%</th>
-                    <th scope="col">Local Share Usually 20%</th>
-                    <th scope="col">Local Contribution Beyond Local Share</th>
-                    <th scope="col">Total Share</th>
-                    <th scope="col">TDC Amount Requested</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>               
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>  
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>  
-                </tr>
-                <tr>
-                    <td>Total Funding By Share</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>
-                    <td>$0.00</td>  
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-light">Add Funding</button>
-        <button type="button" class="btn btn-light">Remove Funding</button>
+        <div id="project-funding-vehicles"></div>
+        <div id="add-funding-vehicles"></div>
         <br><br>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">YOE Cost</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-            </div>
-        </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Operations</th>
-                    <th scope="col">Federal Share Usually 50%</th>
-                    <th scope="col">Local Share Usually 50%</th>
-                    <th scope="col">Local Contribution Beyond Local Share</th>
-                    <th scope="col">Total Share</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td>            
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td> 
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td> 
-                </tr>
-                <tr>
-                    <td>Total Funding By Share</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td>
-                    <td>$0.00</td> 
-                    <td>$0.00</td> 
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-light">Add Funding</button>
-        <button type="button" class="btn btn-light">Remove Funding</button>
+        <div id="project-funding-operations"></div>
+        <div id = "add-funding-operations"></div>
         <br><br>
         <h5>Contact Information</h5>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone No.</th>
-                    <th scope="col">eMail</th>
-                    <th scope="col">Agency</th>
-                    <th scope="col">Title</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sponsor</td>
-                    <td></td>
-                    <td></td>
-                    <td></td> 
-                    <td></td>            
-                </tr>
-            </tbody>
-        </table>
+        <div id = "contact-information"></div>
+        <br>
         <div class="row justify-content-start">
             <div class="col">
                 <h5>Attachments (Include a map of your service area or other documents).</h5>
@@ -650,4 +471,17 @@
             </div>
         </div>
     </div>
+
+    <!-- partial -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdn3.devexpress.com/jslib/19.2.6/js/dx.all.js'></script>
+  <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+  <script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!--JavaScript custom-->
+  <script src="main.js"></script>
 </body>
+</html>
