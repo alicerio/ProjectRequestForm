@@ -35,23 +35,30 @@ function projectFundingBus(){
             {
                 dataField:"fedShare",
                 caption:"Federal Share (Usually 80%)",
-                format:"currency"
+                dataType:"number"
             },
             {
                 dataField:"locShare",
-                caption:"Local Share (Usually 20%)"
+                caption:"Local Share (Usually 20%)",
+                dataType:"number"
             },
             {
                 dataField:"locCont",
-                caption:"Local Contribution Beyond Local Share"
+                caption:"Local Contribution Beyond Local Share",
+                dataType:"number"
             },
             {
                 dataField:"totalShare",
-                caption:"Total Share"
+                caption:"Total Share",
+                dataType:"number",
+                calculateCellValue: function(rowData) {
+                    return rowData.fedShare + rowData.locShare + rowData.locCont;
+                }
             },
             {
                 dataField:"TDCAmount",
-                caption:"TDC Amount Requested"
+                caption:"TDC Amount Requested",
+                dataType:"number"
             }
         ],
         summary: {
