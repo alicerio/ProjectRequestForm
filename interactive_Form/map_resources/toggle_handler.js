@@ -14,7 +14,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#pavementCondSwitch').on('click', function(){
     if ( $(this).is(':checked') ) {
-        pavementCond();
+        alert('meow');
+        original_pavement();
     } 
     else {
         clearMetadata("lines");

@@ -101,3 +101,18 @@ function point_drawer(){
         }
     }
 }
+
+function lineDrawer(){    
+    let circleCordinates  = [];
+    for (let i = 0; i < paths.lat.length; i++) {
+        if(i >= 1){
+            let point1 = { lat: parseFloat(paths.lat[i]), lng: parseFloat(paths.lng[i]) };
+            let point2 = { lat: parseFloat(paths.lat[i-1]), lng: parseFloat(paths.lng[i-1]) };
+            circleCordinates.push(generateCoordinates(point1,point2,300));
+           // filterCrashes(circleCordinates)
+            drawLines(circleCordinates);
+            circleCordinates = [];
+        }
+    }
+}
+

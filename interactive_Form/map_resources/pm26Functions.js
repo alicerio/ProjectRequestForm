@@ -64,7 +64,7 @@ function filterCrashes(circlesCordinates) {
             }
         }
         console.log(filter_crashes);
-        alert('entering 26');
+      //  alert('entering 26');
         pm26Data(circlesCordinates, filter_crashes);
     });
 
@@ -72,7 +72,6 @@ function filterCrashes(circlesCordinates) {
 }
 
 function pm26Data(circlesCordinates, filterCrashes) {
-    alert('26');
     let mode = 1;
     let data_for_php = 0;
     let shape = "shape";
@@ -88,13 +87,12 @@ function pm26Data(circlesCordinates, filterCrashes) {
 
 
     let holder = [];
-     console.log(circlesCordinates[0]);
+   //  console.log(circlesCordinates[0]);
     // console.log(filterCrashes[0].lng);
     // console.log( filterCrashes[0].lat);
     // console.log(circlesCordinates[0][0][1]);
     // console.log(circlesCordinates[0][0][0]);
     // console.log(check_a_point(filterCrashes[0].lng, filterCrashes[0].lat,circlesCordinates[0][0][1], circlesCordinates[0][0][0] ));
-    alert('entering loop');
     for(j in circlesCordinates[0]){
         for (index in filterCrashes) { // Organize information into dictionaries
             if(check_a_point(filterCrashes[index].lng, filterCrashes[index].lat,circlesCordinates[0][j][1], circlesCordinates[0][j][0], 0.004254 )){
