@@ -1,3 +1,4 @@
+let counterCORD = 0;
 var poly;
 var map;
 var paths = {
@@ -37,33 +38,37 @@ function addLatLng(event) {
         map: map
     });
 }
-//get in between the points
+//get coordinates between the points
 function generateCoordinates(point1,point2, circlesOnLines){
-    //holders of origin cordinates
-    let lotH = point1.lng;
-    let lanH = point1.lat;
-
+    counterCORD ++;
     let diffLan = difference(point1.lat, point2.lat)/circlesOnLines;
     let diffLot = difference(point1.lng, point2.lng)/circlesOnLines; 
 
-    let i =0;
-    let to_visualize = { lat:point1.lat, lng:point1.lng };
+    console.log(diffLan + " " + diffLot);
+ 
+    const to_visualize = { lat:parseFloat(point1.lat), lng:parseFloat(point1.lng) };
+    var genCord = [];
 
     for(let i = 0; i < circlesOnLines; i++){
         to_visualize.lat += diffLan;
         to_visualize.lng += diffLot;
-
+        genCord.push(Object.values(to_visualize));
+        /*
          var cityCircle = new google.maps.Circle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
+            strokeColor: '',
+            strokeOpacity: 0.01,
             strokeWeight: 2,
-            fillColor: '#FF0000',
+            fillColor: '',
             fillOpacity: 0.35,
             map: map,
             center: to_visualize,
             radius: 50
         });
+        */
     }
+    console.log(genCord);
+
+    return genCord;
 }
 //helper method
 function difference(num1, num2){
@@ -81,26 +86,18 @@ function pointInTheMiddle(point1,point2){
     });
     return to_visualize;
 }
-//circles
-function draw() {
-    let counter = 0;
-    for (i in paths.lat) {
-        let to_visualize = { lat: parseFloat(paths.lat[i]), lng: parseFloat(paths.lng[i]) };
-        if(counter >= 1){
-            let point1 = { lat: parseFloat(paths.lat[counter-1]), lng: parseFloat(paths.lng[counter-1]) };
-            generateCoordinates(point1,to_visualize,300);
-        }
-        var cityCircle = new google.maps.Circle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: 'blue',
-            fillOpacity: 0.35,
-            map: map,
-            center: to_visualize,
-            radius: 50
-        });
-       counter++;
-    }
 
+// Function that will iterate 2 points at a time and draws 2 points per iteration so
+// user can click infinite circles and draw
+function point_drawer(){    
+    let circleCordinates  = [];
+    for (let i = 0; i < paths.lat.length; i++) {
+        if(i >= 1){
+            let point1 = { lat: parseFloat(paths.lat[i]), lng: parseFloat(paths.lng[i]) };
+            let point2 = { lat: parseFloat(paths.lat[i-1]), lng: parseFloat(paths.lng[i-1]) };
+            circleCordinates.push(generateCoordinates(point1,point2,300));
+            filterCrashes(circleCordinates);
+            circleCordinates = [];
+        }
+    }
 }

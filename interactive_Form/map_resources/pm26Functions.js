@@ -1,12 +1,119 @@
 /** 
  * For testing purposes
  *  
-*/
+ */
 
 
-function pm26Data() {
+//checks if point C is inside A and B
+function insideRange(pointA, pointB, pointC) {
+    if (differencePositive(distance(pointA, pointC) + distance(pointB, pointC), distance(pointA, pointB)) <= 0.00009) {
+        return true
+    }
+    return false;
+}
+
+function differencePositive(val1, val2) {
+    if (val1 > val2) {
+        return val1 - val2;
+    } else {
+        return val2-val1;
+    }
+}
+
+// formula to check if a point lies between 2 points
+function distance(pointA, pointB) {
+    //   console.log(Math.sqrt(Math.pow((pointA.lng - pointB.lng), 2) + Math.pow((pointA.lat - pointB.lat), 2)));
+    return Math.sqrt(Math.pow((pointA.lng - pointB.lng), 2) + Math.pow((pointA.lat - pointB.lat), 2));
+}
+
+function filterCrashes(circlesCordinates) {
+    let php_handler = "./map_resources/map_handler.php";
+
+    let key = 'all_pm26';
+    data_for_php = {
+        key: key
+    };
+    let shape = "shape";
+    let filter_crashes = [];
+
+    let pointA = {
+        lat: circlesCordinates[0][0][0],
+        lng: circlesCordinates[0][0][1]
+    };
+    let pointB = {
+        lat: circlesCordinates[0][299][0],
+        lng: circlesCordinates[0][299][1]
+    };
+    console.log(pointA);
+    console.log(pointB);
+
+
+    //get all points
+    $.get(php_handler, data_for_php, function (data) {
+        for (index in data.shape_arr) {
+            holder = [];
+            holder.push(wktFormatterPoint(data.shape_arr[index][shape]));
+            holder = holder[0][0]; // Fixes BLOBs
+            let pointC = {
+                lat: parseFloat(holder[0].lat),
+                lng: parseFloat(holder[0].lng)
+            };
+
+            if (insideRange(pointA, pointB, pointC)) {
+                filter_crashes.push(pointC);
+            }
+        }
+        console.log(filter_crashes);
+        alert('entering 26');
+        pm26Data(circlesCordinates, filter_crashes);
+    });
+
+
+}
+
+function pm26Data(circlesCordinates, filterCrashes) {
+    alert('26');
+    let mode = 1;
+    let data_for_php = 0;
+    let shape = "shape";
+    let php_handler = "./map_resources/map_handler.php";
+
+    let key = 'all_pm26';
+    data_for_php = {
+        key: key
+    };
+
+    let coordinates = [];
+    let image = "../img/pdf.png";
+
+
+    let holder = [];
+     console.log(circlesCordinates[0]);
+    // console.log(filterCrashes[0].lng);
+    // console.log( filterCrashes[0].lat);
+    // console.log(circlesCordinates[0][0][1]);
+    // console.log(circlesCordinates[0][0][0]);
+    // console.log(check_a_point(filterCrashes[0].lng, filterCrashes[0].lat,circlesCordinates[0][0][1], circlesCordinates[0][0][0] ));
+    alert('entering loop');
+    for(j in circlesCordinates[0]){
+        for (index in filterCrashes) { // Organize information into dictionaries
+            if(check_a_point(filterCrashes[index].lng, filterCrashes[index].lat,circlesCordinates[0][j][1], circlesCordinates[0][j][0], 0.004254 )){
+                let point = new google.maps.Marker({
+                    position: filterCrashes[index],
+                    title: filterCrashes[index].lat + " " + filterCrashes[index].lng,
+                    icon: image
+                });
+        
+                point.setMap(map);
+                points.push(point);
+            }
+        }
+    }
+}
+
+function normalDraw() {
     console.log("inside 26");
-    let mode=1;
+    let mode = 1;
     let pm26Data = {
         goodTX: 0,
         fairTX: 0,
@@ -18,24 +125,24 @@ function pm26Data() {
         poorNM: 0,
         noDataNM: 0,
 
-        tx_good_count:0,
-        tx_fair_count:0,
-        tx_poor_count:0,
-        tx_no_data_count:0,
+        tx_good_count: 0,
+        tx_fair_count: 0,
+        tx_poor_count: 0,
+        tx_no_data_count: 0,
 
-        nm_good_count:0,
-        nm_fair_count:0,
-        nm_poor_count:0,
+        nm_good_count: 0,
+        nm_fair_count: 0,
+        nm_poor_count: 0,
         nm_no_data_count: 0,
 
         dynamicTot: 0,
-        dynamicPoor:0,
+        dynamicPoor: 0,
 
-        totTXBridges:0,
+        totTXBridges: 0,
         totNMBridges: 0,
-        tnodatabridges:0,
+        tnodatabridges: 0,
 
-        lowestRating:0
+        lowestRating: 0
     };
 
     let data_for_php = 0;
@@ -44,8 +151,10 @@ function pm26Data() {
 
     if (mode == 0 || mode == 1) { // if we want regional (default) data
         let key = 'all_pm26';
-        data_for_php = { key: key };
-    } 
+        data_for_php = {
+            key: key
+        };
+    }
 
     console.log(php_handler);
     console.log(data_for_php);
@@ -63,67 +172,70 @@ function pm26Data() {
             let substruc_c = parseInt(data.shape_arr[index]['substruc_c']);
             let region = data.shape_arr[index]['region'];
             let type = data.shape_arr[index]['mode'];
-          //  let typeHolder = currentType;
+            //  let typeHolder = currentType;
             lowestRating = Math.min(deck_cond_, superstruc, substruc_c);
 
-         
-                //count bridges by region
-                if (region == "TX" || region == "Texas") {
-                    pm26Data.totTXBridges++;
-                } else if (region == "NM" || region == "New Mexico") {
-                    pm26Data.totNMBridges++;
-                }
 
-                // Count Conditions by Region. Used for Graph
-                if (lowestRating >= 7 && lowestRating <= 9) {
-                    condition = 'Good Condition';
-                    image = "../img/crash.png";
-                    if (region == "TX" || region == "Texas") {
-                        pm26Data.tx_good_count++;
-                    } else {
-                        pm26Data.nm_good_count++;
-                    }
-                } else if (lowestRating >= 5 && lowestRating <= 6) {
-                    condition = 'Fair Condition';
-                    image = "../img/crash.png";
-                    if (region == 'TX' || region == "Texas") {
-                        pm26Data.tx_fair_count++;
-                    } else {
-                        pm26Data.nm_fair_count++;
-                    }
-                } else if (lowestRating >= 0 && lowestRating <= 4) {
-                    condition = 'Poor Condition';
-                    image = "../img/crash.png";
-                    if (region == 'TX' || region == "Texas") {
-                        pm26Data.tx_poor_count++;
-                    } else {
-                        pm26Data.nm_poor_count++;
-                    }
-                } else if (lowestRating == 999) {
-                    condition = 'No data';
-                    image = "../img/crash.png";
-                    if (region == 'TX' || region == "Texas") {
-                        pm26Data.tx_no_data_count++;
-                    } else {
-                        pm26Data.nm_no_data_count++;
-                    }
-                } else {//null
-                    condition = 'No data';
-                    image = "../img/crash.png";
-                    if (region == 'TX' || region == "Texas") {
-                        pm26Data.tx_no_data_count++;
-                    } else {
-                        pm26Data.nm_no_data_count++;
-                    }
+            //count bridges by region
+            if (region == "TX" || region == "Texas") {
+                pm26Data.totTXBridges++;
+            } else if (region == "NM" || region == "New Mexico") {
+                pm26Data.totNMBridges++;
+            }
+
+            // Count Conditions by Region. Used for Graph
+            if (lowestRating >= 7 && lowestRating <= 9) {
+                condition = 'Good Condition';
+                image = "../img/crash.png";
+                if (region == "TX" || region == "Texas") {
+                    pm26Data.tx_good_count++;
+                } else {
+                    pm26Data.nm_good_count++;
                 }
-            
-            
+            } else if (lowestRating >= 5 && lowestRating <= 6) {
+                condition = 'Fair Condition';
+                image = "../img/crash.png";
+                if (region == 'TX' || region == "Texas") {
+                    pm26Data.tx_fair_count++;
+                } else {
+                    pm26Data.nm_fair_count++;
+                }
+            } else if (lowestRating >= 0 && lowestRating <= 4) {
+                condition = 'Poor Condition';
+                image = "../img/crash.png";
+                if (region == 'TX' || region == "Texas") {
+                    pm26Data.tx_poor_count++;
+                } else {
+                    pm26Data.nm_poor_count++;
+                }
+            } else if (lowestRating == 999) {
+                condition = 'No data';
+                image = "../img/crash.png";
+                if (region == 'TX' || region == "Texas") {
+                    pm26Data.tx_no_data_count++;
+                } else {
+                    pm26Data.nm_no_data_count++;
+                }
+            } else { //null
+                condition = 'No data';
+                image = "../img/crash.png";
+                if (region == 'TX' || region == "Texas") {
+                    pm26Data.tx_no_data_count++;
+                } else {
+                    pm26Data.nm_no_data_count++;
+                }
+            }
+
+
             let holder = [];
 
-            if (mode == 1 || mode == 2 || mode == 4)  { // mode 1 and 2 allows us to draw points 
+            if (mode == 1 || mode == 2 || mode == 4) { // mode 1 and 2 allows us to draw points 
                 holder.push(wktFormatterPoint(data.shape_arr[index][shape]));
                 holder = holder[0][0]; // Fixes BLOBs
-                let to_visualize = { lat: parseFloat(holder[0].lat), lng: parseFloat(holder[0].lng) };
+                let to_visualize = {
+                    lat: parseFloat(holder[0].lat),
+                    lng: parseFloat(holder[0].lng)
+                };
                 let titleH = condition + ": " + lowestRating;
                 if (lowestRating == 999) {
                     titleH = condition;
@@ -131,15 +243,15 @@ function pm26Data() {
                 let point = new google.maps.Marker({
                     position: to_visualize,
                     title: titleH,
-                   // value: '',
+                    // value: '',
                     icon: image
                 });
                 // draw by 1 type at a time
-            
-                    point.setMap(map);
-                    points.push(point);
-                
-               
+
+                point.setMap(map);
+                points.push(point);
+
+
             }
 
         }
@@ -183,175 +295,26 @@ function pm26Data() {
         }
 
         if (mode == 1) {
-           // regionalText(pm26Data);
+            // regionalText(pm26Data);
         }
 
-    }); 
-}
-
-//draw Chart
-function chart_pm26(g1, data) {
-    //  pm26Percentates();
-    var myChart = new Chart(g1, {
-        type: 'bar',
-        data: {
-            labels: [''],
-            datasets: [
-                {
-                    label: data.tx_good_count + " Good",
-                    data: [data.goodTX],
-                    backgroundColor: [
-                        'rgba(30, 130, 76, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(30, 130, 76, 1)',
-
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: data.tx_fair_count + ' Fair',
-                    data: [data.fairTX],
-                    backgroundColor: [
-                        'rgba(247, 202, 24, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(247, 202, 24, 1)',
-
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label:data.tx_poor_count +   ' Poor',
-                    data: [data.poorTX],
-                    backgroundColor: [
-                        'rgba(242, 38, 19, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(242, 38, 19, 1)',
-
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label:data.tx_no_data_count +  ' No Data',
-                    data: [data.noDataTX],
-                    backgroundColor: [
-                        'rgba(149, 165, 166, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(149, 165, 166, 1)',
-
-                    ],
-                    borderWidth: 1
-                }]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                labels: {
-                    fontSize: 14,
-                    boxWidth: 15
-                }
-            },
-            title: {
-                display: true,
-                text: 'Texas (' + data.totTXBridges+ ' bridges)'
-            },
-            scales: {
-                yAxes: [
-                    {
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Percentage',
-                        },
-                    },
-                ],
-            },
-        }
-    });
-
-}
-
-function chart_pm26_2(g2,data){
-    myChart2 = new Chart(g2, {
-        type: 'bar',
-        data: {
-            labels: [''],
-            datasets: [
-                {
-                    label: data.nm_good_count + ' Good',
-                    data: [data.goodNM],
-                    backgroundColor: [
-                        'rgba(30, 130, 76, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(30, 130, 76, 1)',
-
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label:data.nm_fair_count +   ' Fair',
-                    data: [data.fairNM],
-                    backgroundColor: [
-                        'rgba(247, 202, 24, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(247, 202, 24, 1)',
-
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: data.nm_poor_count + ' Poor',
-                    data: [data.poorNM],
-                    backgroundColor: [
-                        'rgba(242, 38, 19, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(242, 38, 19, 1)',
-
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: data.nm_no_data_count+' No Data',
-                    data: [data.noDataNM],
-                    backgroundColor: [
-                        'rgba(149, 165, 166, 1)',
-                    ],
-                    borderColor: [
-                        'rgba(149, 165, 166, 1)',
-
-                    ],
-                    borderWidth: 1
-                }]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                labels: {
-                    fontSize: 14,
-                    boxWidth: 16
-                }
-            },
-            title: {
-                display: true,
-                text: 'New Mexico (' + data.totNMBridges+ ' bridges)'
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        callback: function (value) {
-                            value = value / 100;
-                            return value.toLocaleString('en-US', { style: 'percent' });
-                        },
-                    }
-                }]
-            }
-        }
     });
 }
 
+
+function check_a_point(x, y, circlex, circley, r) {
+    console.log(x + " " + y + " " + circlex + " " + circley + " " + r);
+    var dist = (x - circlex) * (x - circlex) + (y - circley) * (y - circley);
+    r *= r;
+    if (dist < r) return true;
+    return false;
+
+    /*
+        var dist_points = (a - x) * (a - x) + (b - y) * (b - y);
+        r *= r;
+        if (dist_points < r) {
+            return true;
+        }
+        return false;
+        */
+}
